@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "title": "Orbix Labs — Engineering Tomorrow",
+    "description": "A plataforma tecnológica pensada para empresas africanas."
+  },
+  "nav": {
+    "solutions": "Soluções",
+    "products": "Produtos",
+    "academy": "Academy",
+    "about": "Sobre",
+    "blog": "Blog",
+    "contact": "Contato",
+    "pricing": "Preços",
+    "signin": "Entrar",
+    "getstarted": "Começar",
+    "dashboard": "Meu espaço",
+    "language": "Idioma"
+  },
+  "hero": {
+    "title": "Engineering Tomorrow.",
+    "subtitle": "A plataforma tecnológica pensada para empresas africanas.",
+    "cta_primary": "Começar gratuitamente →",
+    "cta_secondary": "Ver nossos serviços"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Ocorreu um erro",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "back": "Voltar"
+  }
+}
