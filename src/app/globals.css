@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #7b30ff;
+  --color-secondary: #a855f7;
+  --color-cyan: #00d4ff;
+
+  --surface-base: #0a0a0f;
+  --surface-raised: #0d0d14;
+  --surface-overlay: #12121c;
+  --surface-border: #1a1a2e;
+  --surface-muted: #1e1e30;
+
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b8;
+  --text-muted: #6b6b80;
+  --text-disabled: #3a3a4a;
+}
+
+@layer base {
+  * {
+    @apply border-surface-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-surface-base text-text-primary font-body antialiased;
+  }
+
+  ::selection {
+    background-color: rgba(123, 48, 255, 0.35);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #7b30ff;
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(135deg, #7b30ff 0%, #a855f7 50%, #00d4ff 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #7b30ff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    background: linear-gradient(#0d0d14, #0d0d14) padding-box,
+      linear-gradient(135deg, #7b30ff, #00d4ff) border-box;
+    border: 1px solid transparent;
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 30px rgba(123, 48, 255, 0.4), 0 0 60px rgba(123, 48, 255, 0.1);
+  }
+
+  .glass {
+    background: rgba(13, 13, 20, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-strong {
+    background: rgba(13, 13, 20, 0.85);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(123, 48, 255, 0.2);
+  }
+
+  /* Overlay appliqué sur les vidéos/photos pour garder une teinte violette
+     cohérente quelle que soit la source (voir Hero). Va du violet en haut
+     au quasi-noir en bas, ce qui se fond naturellement dans le thème sombre.
+     Pas de `position` ici : l'élément qui porte cette classe doit déjà être
+     positionné par ailleurs (ex. Tailwind `absolute`) — en déclarer une ici
+     entrait en conflit avec `.absolute` selon l'ordre du CSS compilé et
+     cassait le positionnement (vidéo réduite à sa taille naturelle au lieu
+     de couvrir toute la section). */
+  .duotone-violet::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(90, 18, 201, 0.75) 0%,
+      rgba(37, 15, 74, 0.72) 45%,
+      rgba(10, 10, 15, 0.9) 100%
+    );
+    mix-blend-mode: multiply;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

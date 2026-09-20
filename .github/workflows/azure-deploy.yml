@@ -1,0 +1,49 @@
+name: Déploiement orbix-website sur Azure App Service
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Vérifier les types
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npx next lint
+
+      # Ces variables doivent être de vraies clés pour un build de
+      # production correct (Clerk les valide au build, voir README) —
+      # à définir comme secrets GitHub, pas les valeurs de test utilisées
+      # localement pour les vérifications de ce projet.
+      - name: Build
+        env:
+          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
+          CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+        run: npm run build
+
+      - name: Élaguer les dépendances de développement
+        run: npm prune --omit=dev
+
+      - name: Déployer sur Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: orbix-website # ⚠️ à adapter si ton App Service porte un autre nom
+          publish-profile: ${{ secrets.AZURE_WEBSITE_PUBLISH_PROFILE }}
+          package: .
