@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { Menu, X } from 'lucide-react'
 
-import { NAV_LINKS, ACADEMY_URL } from '@/lib/constants'
+import { NAV_LINKS } from '@/lib/constants'
 import { OrbixLogo, OrbixWordmark } from './OrbixLogo'
 
 // Barre de navigation façon apple.com : fine, sombre et translucide en
@@ -31,9 +31,6 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <a href={ACADEMY_URL} className={linkClass}>
-            Academy
-          </a>
         </div>
 
         <div className="hidden items-center gap-5 md:flex">
@@ -78,12 +75,6 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <a
-              href={ACADEMY_URL}
-              className="border-b border-white/[0.06] py-3.5 font-display text-2xl font-semibold tracking-tight text-white"
-            >
-              Academy
-            </a>
           </div>
           <div className="mt-6 flex flex-col gap-3">
             <SignedOut>

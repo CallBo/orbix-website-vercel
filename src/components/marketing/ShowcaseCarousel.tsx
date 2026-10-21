@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { Pause, Play } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
-import { ACADEMY_URL } from '@/lib/constants'
 import { Reveal } from '@/components/ui/Reveal'
 
 // Carrousel façon "Endless entertainment." d'apple.com : grandes cartes
@@ -26,12 +25,12 @@ const slides = [
     position: '50% 40%',
   },
   {
-    label: 'Orbix Academy',
-    title: 'Apprendre à coder. Pour de vrai.',
-    text: 'Cours vidéo, exercices et suivi de progression.',
-    cta: { label: 'Voir les cours', href: ACADEMY_URL },
-    photo: '/photos/academy.webp',
-    alt: 'Étudiante travaillant sur son ordinateur portable',
+    label: 'Messagerie',
+    title: 'L’équipe, à portée de message.',
+    text: 'Une conversation par projet, fichiers et validations compris.',
+    cta: { label: 'En savoir plus', href: '/services' },
+    photo: '/photos/travail.webp',
+    alt: 'Femme travaillant sur son ordinateur portable',
     position: '35% 35%',
   },
   {
