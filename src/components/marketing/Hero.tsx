@@ -4,18 +4,18 @@ import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/layout/Container'
 import { Button } from '@/components/ui/Button'
 import { OrbixLogo } from '@/components/layout/OrbixLogo'
-import { AmbientVideo } from './AmbientVideo'
+import { HeroOrbit } from './HeroOrbit'
 
 // Hero en bande sombre façon keynote : grand titre centré, logo en filigrane
-// lumineux, vidéo d'ambiance assourdie en fond. Contraste volontaire avec
-// le reste du site, désormais clair — c'est le seul "moment fort" sombre
-// de la page d'accueil, comme Apple le fait sur ses pages de lancement.
+// lumineux, fond animé (anneaux orbitaux + étoiles, voir HeroOrbit) plutôt
+// qu'une vidéo — net à toute résolution et cohérent avec l'identité de
+// marque. Contraste volontaire avec le reste du site, désormais clair :
+// c'est le seul "moment fort" sombre de la page d'accueil, comme Apple le
+// fait sur ses pages de lancement.
 export function Hero() {
   return (
     <section className="ink-section relative isolate flex min-h-[92vh] items-center overflow-hidden pt-14">
-      <div className="duotone-ink absolute inset-0 -z-10">
-        <AmbientVideo src="/hero-bg.mp4" poster="/hero-bg-poster.jpg" className="h-full w-full object-cover opacity-60" />
-      </div>
+      <HeroOrbit />
 
       <Container className="relative flex flex-col items-center py-24 text-center md:py-32">
         <OrbixLogo variant="mono" className="mb-8 h-16 w-16 animate-fade-in md:h-20 md:w-20" />
