@@ -7,6 +7,10 @@ on:
 
 jobs:
   build-and-deploy:
+    # Uniquement sur le dépôt de l'organisation : le site est désormais
+    # hébergé sur Vercel via le dépôt CallBo/orbix-website-vercel, où ce
+    # workflow (sans identifiants Azure) échouait à chaque push.
+    if: github.repository == 'OrbixLabsTeam/orbix-website'
     runs-on: ubuntu-latest
     steps:
       - name: Récupérer le code
