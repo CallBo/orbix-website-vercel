@@ -37,14 +37,20 @@ export function RealisationSpotlight() {
           </div>
         </Reveal>
         <Reveal delay={0.15} className="mt-10 w-full px-4 md:mt-12 md:px-6">
-          <Image
-            src={r.hero.src}
-            alt={r.hero.alt}
-            width={r.hero.width}
-            height={r.hero.height}
-            sizes="(min-width: 1024px) 1000px, 100vw"
-            className="mx-auto w-full max-w-[1000px] translate-y-[3%]"
-          />
+          {/* Photo d'appareil réelle (1re photo horizontale de la galerie) */}
+          {(() => {
+            const photo = r.gallery.find((g) => g.width > g.height) ?? r.hero
+            return (
+              <Image
+                src={photo.src}
+                alt={'caption' in photo ? photo.caption : photo.alt}
+                width={photo.width}
+                height={photo.height}
+                sizes="(min-width: 1024px) 1100px, 100vw"
+                className="mx-auto mb-4 w-full max-w-[1100px] rounded-[24px] md:mb-6"
+              />
+            )
+          })()}
         </Reveal>
       </section>
     </div>

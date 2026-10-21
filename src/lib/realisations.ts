@@ -83,9 +83,35 @@ export const realisations: Realisation[] = [
       { title: 'Signature', text: 'Le Médecin Coordonnateur de zone signe les carnets ; sa signature s’imprime sur le certificat.' },
       { title: 'Remise', text: 'L’agent vérifie la pièce d’identité avant de remettre le carnet.' },
     ],
+    // Captures réelles de la plateforme incrustées dans des photos
+    // d'appareils (perspective, encoche et coins arrondis respectés).
+    // Les photos horizontales s'affichent en pleine largeur, les
+    // verticales côte à côte.
     gallery: [
-      { src: `${base}/tableau-de-bord.webp`, width: 1800, height: 1263, caption: 'Tableau de bord du directeur : doses, caisse et alertes en temps réel' },
-      { src: `${base}/certificat-et-recu.webp`, width: 1800, height: 1260, caption: 'Certificat international et reçu, vérifiables par QR code' },
+      {
+        src: `${base}/photo-ordinateur-espace-voyageur.webp`,
+        width: 2000,
+        height: 1125,
+        caption: 'L’espace voyageur : vaccinations, rappels et certificats, consultables à tout moment.',
+      },
+      {
+        src: `${base}/photo-telephone-espace-voyageur.webp`,
+        width: 1200,
+        height: 1800,
+        caption: 'Le carnet du voyageur, sur son téléphone.',
+      },
+      {
+        src: `${base}/photo-ordinateur-tableau-de-bord.webp`,
+        width: 1200,
+        height: 1877,
+        caption: 'Le tableau de bord du directeur : doses, caisse et alertes.',
+      },
+      {
+        src: `${base}/photo-telephone-verification.webp`,
+        width: 1200,
+        height: 1800,
+        caption: 'Un carnet vérifié par QR code, depuis n’importe où.',
+      },
     ],
     security: {
       title: 'Chaque dose, chaque franc, chaque carnet. Traçables.',

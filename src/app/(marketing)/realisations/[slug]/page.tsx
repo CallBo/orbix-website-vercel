@@ -155,24 +155,46 @@ export default async function RealisationPage({ params }: { params: Promise<{ sl
           <Reveal className="max-w-3xl">
             <h2 className="font-display text-4xl font-semibold tracking-tighter text-text-primary md:text-6xl">En images.</h2>
           </Reveal>
-          <div className="mt-14 space-y-14">
-            {r.gallery.map((g) => (
-              <Reveal key={g.src}>
-                <figure>
-                  <div className="overflow-hidden rounded-[24px] bg-surface-overlay">
+          {/* Photos horizontales en pleine largeur, verticales côte à côte */}
+          <div className="mt-14 space-y-6">
+            {r.gallery
+              .filter((g) => g.width > g.height)
+              .map((g) => (
+                <Reveal key={g.src}>
+                  <figure>
                     <Image
                       src={g.src}
                       alt={g.caption}
                       width={g.width}
                       height={g.height}
                       sizes="(min-width: 1024px) 1200px, 100vw"
-                      className="w-full"
+                      className="w-full rounded-[24px]"
                     />
-                  </div>
-                  <figcaption className="mt-4 text-[15px] text-text-secondary">{g.caption}</figcaption>
-                </figure>
-              </Reveal>
-            ))}
+                    <figcaption className="mt-4 text-[15px] text-text-secondary">{g.caption}</figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            <div className="grid gap-6 pt-8 md:grid-cols-3">
+              {r.gallery
+                .filter((g) => g.width <= g.height)
+                .map((g, i) => (
+                  <Reveal key={g.src} delay={i * 0.08}>
+                    <figure>
+                      <div className="aspect-[2/3] overflow-hidden rounded-[24px]">
+                        <Image
+                          src={g.src}
+                          alt={g.caption}
+                          width={g.width}
+                          height={g.height}
+                          sizes="(min-width: 768px) 33vw, 100vw"
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                      <figcaption className="mt-4 text-[15px] text-text-secondary">{g.caption}</figcaption>
+                    </figure>
+                  </Reveal>
+                ))}
+            </div>
           </div>
           <p className="mt-12 text-sm text-text-muted">{r.disclaimer}</p>
         </Container>
