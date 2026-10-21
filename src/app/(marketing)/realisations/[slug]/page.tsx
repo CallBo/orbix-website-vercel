@@ -155,9 +155,9 @@ export default async function RealisationPage({ params }: { params: Promise<{ sl
           <Reveal className="max-w-3xl">
             <h2 className="font-display text-4xl font-semibold tracking-tighter text-text-primary md:text-6xl">En images.</h2>
           </Reveal>
-          <div className="mt-14 grid gap-x-6 gap-y-14 md:grid-cols-2">
-            {r.gallery.map((g, i) => (
-              <Reveal key={g.src} delay={(i % 2) * 0.08} className={i === 0 ? 'md:col-span-2' : ''}>
+          <div className="mt-14 space-y-14">
+            {r.gallery.map((g) => (
+              <Reveal key={g.src}>
                 <figure>
                   <div className="overflow-hidden rounded-[24px] bg-surface-overlay">
                     <Image
@@ -165,7 +165,7 @@ export default async function RealisationPage({ params }: { params: Promise<{ sl
                       alt={g.caption}
                       width={g.width}
                       height={g.height}
-                      sizes={i === 0 ? '(min-width: 1024px) 1200px, 100vw' : '(min-width: 768px) 50vw, 100vw'}
+                      sizes="(min-width: 1024px) 1200px, 100vw"
                       className="w-full"
                     />
                   </div>
@@ -178,25 +178,16 @@ export default async function RealisationPage({ params }: { params: Promise<{ sl
         </Container>
       </section>
 
-      {/* ── Lutte contre la fraude ──────────────────────────── */}
-      <section className="bg-black py-24 text-white md:py-32">
-        <Container>
-          <Reveal className="max-w-3xl">
-            <ShieldCheck className="h-9 w-9" strokeWidth={1.4} />
-            <h2 className="mt-6 font-display text-4xl font-semibold tracking-tighter md:text-6xl">
-              Conçue pour que la fraude
-              <br />
-              <span className="text-white/50">ne passe pas inaperçue.</span>
+      {/* ── Sécurité (volontairement sans détail des contrôles) ── */}
+      <section className="bg-black py-24 text-center text-white md:py-32">
+        <Container className="max-w-4xl">
+          <Reveal>
+            <ShieldCheck className="mx-auto h-10 w-10" strokeWidth={1.4} />
+            <h2 className="mt-6 font-display text-4xl font-semibold leading-[1.05] tracking-tighter md:text-6xl">
+              {r.security.title}
             </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60 md:text-xl">{r.security.text}</p>
           </Reveal>
-          <div className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2">
-            {r.fraud.map((f, i) => (
-              <Reveal key={f.risk} delay={(i % 2) * 0.08} className="border-t border-white/15 pt-6">
-                <h3 className="font-display text-xl font-semibold tracking-tight">{f.risk}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-white/60">{f.answer}</p>
-              </Reveal>
-            ))}
-          </div>
         </Container>
       </section>
 

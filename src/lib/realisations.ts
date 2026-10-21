@@ -26,7 +26,10 @@ export interface Realisation {
   problem: { intro: string; stats: { value: string; label: string }[]; text: string }
   steps: { title: string; text: string }[]
   gallery: { src: string; width: number; height: number; caption: string }[]
-  fraud: { risk: string; answer: string }[]
+  // Une phrase sur la sécurité, volontairement sans détail des contrôles :
+  // le site est public, inutile d'expliquer à de potentiels fraudeurs
+  // comment fonctionnent les parades d'un système de l'État.
+  security: { title: string; text: string }
   stack: string[]
   figures: { value: string; label: string }[]
   disclaimer: string
@@ -81,26 +84,13 @@ export const realisations: Realisation[] = [
       { title: 'Remise', text: 'L’agent vérifie la pièce d’identité avant de remettre le carnet.' },
     ],
     gallery: [
-      { src: `${base}/tableau-de-bord.webp`, width: 1800, height: 1263, caption: 'Tableau de bord du directeur et alertes' },
-      { src: `${base}/carnet-mis-a-jour.webp`, width: 1800, height: 1263, caption: 'Carnet unique, mis à jour à chaque visite' },
-      { src: `${base}/certificat-et-recu.webp`, width: 1800, height: 1260, caption: 'Certificat international et reçu, avec QR code' },
-      { src: `${base}/vaccin-pharmacie-preuves.webp`, width: 1800, height: 1263, caption: 'Preuves en photo pour un vaccin de pharmacie' },
-      { src: `${base}/cloture-de-caisse.webp`, width: 1800, height: 1263, caption: 'Clôture de caisse du soir' },
-      { src: `${base}/verification-qr.webp`, width: 1800, height: 1263, caption: 'Vérification publique par QR code' },
-      { src: `${base}/signature-medecin.webp`, width: 1800, height: 1263, caption: 'Signature des carnets par le Médecin Coordonnateur' },
-      { src: `${base}/journal-audit-scelle.webp`, width: 1800, height: 1263, caption: 'Journal d’audit scellé' },
-      { src: `${base}/registre-19-colonnes.webp`, width: 1800, height: 1263, caption: 'Registre officiel sur 19 colonnes' },
+      { src: `${base}/tableau-de-bord.webp`, width: 1800, height: 1263, caption: 'Tableau de bord du directeur : doses, caisse et alertes en temps réel' },
+      { src: `${base}/certificat-et-recu.webp`, width: 1800, height: 1260, caption: 'Certificat international et reçu, vérifiables par QR code' },
     ],
-    fraud: [
-      { risk: 'Reçu inventé ou réutilisé', answer: 'Numéro attribué par la plateforme, suite continue sans trou, reçu vérifiable par QR code.' },
-      { risk: 'Espèces détournées', answer: 'Clôture de caisse chaque soir, écart justifié obligatoire, plus d’encaissement après la clôture.' },
-      { risk: 'Faux vaccin « de pharmacie »', answer: 'Photo du reçu et du flacon obligatoires ; une même preuve ne sert qu’une fois ; flacon périmé refusé.' },
-      { risk: 'Doses détournées', answer: 'Chaque dose rattachée à son lot ; comptage physique du stock chaque soir.' },
-      { risk: 'Faux carnet', answer: 'Code de contrôle aléatoire, essais limités, certificat numérique signé.' },
-      { risk: 'Changement d’identité après coup', answer: 'Identité verrouillée dès la signature, correction par le chef de centre avec motif.' },
-      { risk: 'Vol de mot de passe', answer: 'Blocage après 5 essais, double authentification par code à usage unique.' },
-      { risk: 'Modification directe de la base', answer: 'Journal d’audit scellé : chaque ligne est chaînée à la précédente ; toute altération est détectée.' },
-    ],
+    security: {
+      title: 'Chaque dose, chaque franc, chaque carnet. Traçables.',
+      text: 'La plateforme a été conçue pour rendre les détournements difficiles à cacher : toute modification est enregistrée et détectée.',
+    },
     stack: ['NestJS', 'TypeScript', 'PostgreSQL', 'TypeORM', 'JWT', 'Ed25519', 'HMAC-SHA256', 'TOTP', 'Jest', 'Playwright'],
     figures: [
       { value: '6', label: 'profils utilisateurs, chacun avec ses droits' },
@@ -108,7 +98,7 @@ export const realisations: Realisation[] = [
       { value: '98', label: 'scénarios de recette' },
       { value: '4 431', label: 'lignes du registre historique reprises' },
     ],
-    disclaimer: 'Toutes les captures ont été réalisées sur une base de démonstration : les voyageurs, numéros et montants affichés sont fictifs.',
+    disclaimer: 'Captures réalisées sur une base de démonstration : données fictives, noms masqués.',
   },
 ]
 
