@@ -44,7 +44,7 @@ export function HeroOrbit() {
       {/* Anneaux concentriques en rotation lente */}
       <svg
         viewBox="0 0 800 800"
-        className="absolute left-1/2 top-1/2 h-[120vmin] w-[120vmin] -translate-x-1/2 -translate-y-1/2 opacity-[0.28]"
+        className="absolute left-1/2 top-1/2 h-[120vmin] w-[120vmin] -translate-x-1/2 -translate-y-1/2 opacity-[0.12]"
       >
         <defs>
           <linearGradient id="hero-ring-a" x1="0" y1="0" x2="1" y2="1">
@@ -61,7 +61,7 @@ export function HeroOrbit() {
           <circle cx="400" cy="400" r="340" fill="none" stroke="url(#hero-ring-a)" strokeWidth="1" strokeDasharray="4 10" />
         </g>
         <g style={{ transformOrigin: '400px 400px' }} className="animate-[orbit_50s_linear_infinite_reverse]">
-          <circle cx="400" cy="400" r="260" fill="none" stroke="url(#hero-ring-b)" strokeWidth="1.5" />
+          <circle cx="400" cy="400" r="260" fill="none" stroke="url(#hero-ring-b)" strokeWidth="1" strokeDasharray="1 7" />
         </g>
         <g style={{ transformOrigin: '400px 400px' }} className="animate-[orbit_90s_linear_infinite]">
           <circle cx="400" cy="400" r="180" fill="none" stroke="url(#hero-ring-a)" strokeWidth="1" strokeDasharray="2 14" />

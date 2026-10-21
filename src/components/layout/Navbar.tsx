@@ -1,118 +1,106 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { Menu, X } from 'lucide-react'
 
-import { cn } from '@/lib/utils'
 import { NAV_LINKS, ACADEMY_URL } from '@/lib/constants'
-import { Button } from '@/components/ui/Button'
 import { OrbixLogo } from './OrbixLogo'
 
+// Barre de navigation façon apple.com : fine, sombre et translucide en
+// permanence (verre dépoli noir), texte gris clair. Lisible aussi bien
+// au-dessus du Hero noir que des sections blanches — contrairement à une
+// nav transparente qui doit deviner la couleur du fond derrière elle.
+const linkClass = 'text-[12px] font-normal text-white/75 transition-colors duration-200 hover:text-white'
+
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
-    <header
-      className={cn(
-        'fixed top-0 z-50 w-full transition-all duration-300 ease-apple',
-        scrolled ? 'glass shadow-nav' : 'bg-transparent'
-      )}
-    >
-      <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <OrbixLogo className="h-7 w-auto" />
-          <span className="font-display text-base font-semibold tracking-tight text-text-primary">
-            Orbix <span className="text-orbix-600">Labs</span>
-          </span>
+    <header className="glass-dark fixed top-0 z-50 w-full !border-x-0 !border-t-0 border-b border-white/[0.06]">
+      <nav className="mx-auto flex h-12 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Link href="/" className="flex items-center gap-2" aria-label="Orbix Labs — accueil">
+          <OrbixLogo variant="mono" className="h-5 w-5" />
+          <span className="font-display text-[14px] font-semibold tracking-tight text-white">Orbix Labs</span>
         </Link>
 
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-[13px] font-medium text-text-secondary transition-colors hover:text-text-primary"
-            >
+            <Link key={item.href} href={item.href} className={linkClass}>
               {item.label}
             </Link>
           ))}
-          <a
-            href={ACADEMY_URL}
-            className="text-[13px] font-medium text-text-secondary transition-colors hover:text-text-primary"
-          >
+          <a href={ACADEMY_URL} className={linkClass}>
             Academy
           </a>
         </div>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-5 md:flex">
           <SignedOut>
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/auth/login">Connexion</Link>
-            </Button>
-            <Button variant="gradient" size="sm" asChild>
-              <Link href="/auth/register">Get Started</Link>
-            </Button>
+            <Link href="/auth/login" className={linkClass}>
+              Connexion
+            </Link>
+            <Link
+              href="/auth/register"
+              className="rounded-full bg-white px-3.5 py-1 text-[12px] font-medium text-ink-900 transition-colors hover:bg-white/85"
+            >
+              Commencer
+            </Link>
           </SignedOut>
           <SignedIn>
-            <Button variant="secondary" size="sm" asChild>
-              <Link href="/dashboard">Dashboard</Link>
-            </Button>
+            <Link href="/dashboard" className={linkClass}>
+              Dashboard
+            </Link>
             <UserButton afterSignOutUrl="/" />
           </SignedIn>
         </div>
 
         <button
           onClick={() => setMobileOpen((v) => !v)}
-          className="text-text-secondary hover:text-text-primary md:hidden"
+          className="text-white/80 hover:text-white md:hidden"
           aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
         >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
       {mobileOpen && (
-        <div className="border-t border-surface-border bg-surface-base px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-1">
+        <div className="border-t border-white/[0.06] bg-ink-800/95 px-6 pb-8 pt-4 backdrop-blur-xl md:hidden">
+          <div className="flex flex-col">
             {NAV_LINKS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary hover:bg-surface-overlay hover:text-text-primary"
+                className="border-b border-white/[0.06] py-3.5 font-display text-2xl font-semibold tracking-tight text-white"
               >
                 {item.label}
               </Link>
             ))}
             <a
               href={ACADEMY_URL}
-              className="rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary hover:bg-surface-overlay hover:text-text-primary"
+              className="border-b border-white/[0.06] py-3.5 font-display text-2xl font-semibold tracking-tight text-white"
             >
               Academy
             </a>
           </div>
-          <div className="mt-4 flex flex-col gap-2">
+          <div className="mt-6 flex flex-col gap-3">
             <SignedOut>
-              <Button variant="secondary" asChild>
-                <Link href="/auth/login">Connexion</Link>
-              </Button>
-              <Button variant="gradient" asChild>
-                <Link href="/auth/register">Get Started</Link>
-              </Button>
+              <Link
+                href="/auth/register"
+                className="rounded-full bg-white py-3 text-center text-sm font-medium text-ink-900"
+              >
+                Commencer
+              </Link>
+              <Link href="/auth/login" className="py-2 text-center text-sm text-white/75">
+                Connexion
+              </Link>
             </SignedOut>
             <SignedIn>
-              <Button variant="secondary" asChild>
-                <Link href="/dashboard">Dashboard</Link>
-              </Button>
+              <Link href="/dashboard" className="rounded-full bg-white py-3 text-center text-sm font-medium text-ink-900">
+                Dashboard
+              </Link>
             </SignedIn>
           </div>
         </div>

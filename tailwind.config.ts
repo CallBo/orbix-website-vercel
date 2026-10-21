@@ -135,6 +135,18 @@ const config: Config = {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
         },
+        // Ligne de balayage qui descend dans le bouclier (tuile Cybersécurité)
+        scan: {
+          '0%, 100%': { transform: 'translateY(0)', opacity: '0' },
+          '15%, 85%': { opacity: '1' },
+          '50%': { transform: 'translateY(72px)' },
+        },
+        // Point qui circule le long d'une connexion (tuile Automatisation)
+        flow: {
+          '0%': { transform: 'translateX(0)', opacity: '0' },
+          '20%, 80%': { opacity: '1' },
+          '100%': { transform: 'translateX(28px)', opacity: '0' },
+        },
       },
       animation: {
         'fade-in': 'fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1)',

@@ -19,7 +19,7 @@ export function FinalCta() {
             Créez votre compte et déposez votre premier projet en quelques minutes.
           </p>
           <div className="mt-9">
-            <Button variant="primary" size="xl" asChild>
+            <Button variant="primary" size="xl" asChild className="bg-white text-ink-900 hover:bg-white/85">
               <Link href="/auth/register">Créer mon compte gratuitement</Link>
             </Button>
           </div>

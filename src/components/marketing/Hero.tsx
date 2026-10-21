@@ -24,7 +24,7 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[70%_40%] opacity-80"
+          className="scale-110 object-cover object-[70%_40%] opacity-60 blur-[2px]"
         />
       </div>
       <div className="-z-10">
@@ -50,7 +50,7 @@ export function Hero() {
           className="mt-10 flex animate-fade-in-up flex-wrap items-center justify-center gap-4"
           style={{ animationDelay: '0.2s', animationFillMode: 'backwards' }}
         >
-          <Button variant="primary" size="xl" asChild>
+          <Button variant="primary" size="xl" asChild className="bg-white text-ink-900 hover:bg-white/85">
             <Link href="/auth/register">
               Commencer <ArrowRight className="h-4 w-4" />
             </Link>
