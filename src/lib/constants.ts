@@ -2,6 +2,7 @@ export const SITE_NAME = 'Orbix Labs'
 
 export const NAV_LINKS = [
   { label: 'Services', href: '/services' },
+  { label: 'Réalisations', href: '/realisations' },
   { label: 'Tarifs', href: '/pricing' },
   { label: 'À propos', href: '/about' },
 ] as const

@@ -6,6 +6,7 @@ import { OrbixLogo, OrbixWordmark } from './OrbixLogo'
 
 const footerLinks = [
   { label: 'Services', href: '/services' },
+  { label: 'Réalisations', href: '/realisations' },
   { label: 'Tarifs', href: '/pricing' },
   { label: 'Blog', href: '/blog' },
   { label: 'À propos', href: '/about' },
@@ -54,8 +55,8 @@ export function Footer() {
               <p className="text-sm font-medium text-text-primary">Contact</p>
               <ul className="mt-4 space-y-3 text-sm text-text-muted">
                 <li>
-                  <a href="mailto:hello@orbixlabs.tech" className="transition-colors hover:text-text-primary">
-                    hello@orbixlabs.tech
+                  <a href="mailto:contact@orbixlabs.tech" className="transition-colors hover:text-text-primary">
+                    contact@orbixlabs.tech
                   </a>
                 </li>
                 <li>Cotonou, Bénin</li>

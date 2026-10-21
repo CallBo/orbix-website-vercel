@@ -13,7 +13,7 @@ export default function LegalPage() {
         <h1 className="font-display text-4xl font-bold tracking-tight text-text-primary">Mentions légales</h1>
         <div className="mt-8 space-y-6 text-sm leading-relaxed text-text-secondary">
           <p>
-            Orbix Labs SARL — Cotonou, Bénin. Contact : hello@orbixlabs.tech.
+            Orbix Labs SARL — Cotonou, Bénin. Contact : contact@orbixlabs.tech.
           </p>
           <p>
             Ce contenu est un texte de départ à faire valider par un conseil

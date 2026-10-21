@@ -27,8 +27,8 @@ export default function ContactPage() {
               <Mail className="mt-0.5 h-5 w-5 text-orbix-600" />
               <div>
                 <p className="text-sm font-medium text-text-primary">Email</p>
-                <a href="mailto:hello@orbixlabs.tech" className="text-sm text-text-secondary hover:text-text-primary">
-                  hello@orbixlabs.tech
+                <a href="mailto:contact@orbixlabs.tech" className="text-sm text-text-secondary hover:text-text-primary">
+                  contact@orbixlabs.tech
                 </a>
               </div>
             </li>

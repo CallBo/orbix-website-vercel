@@ -1,6 +1,7 @@
 import { Hero } from '@/components/marketing/Hero'
 import { AppTeaser } from '@/components/marketing/AppTeaser'
 import { ProductPanels } from '@/components/marketing/ProductPanels'
+import { RealisationSpotlight } from '@/components/marketing/RealisationSpotlight'
 import { ShowcaseCarousel } from '@/components/marketing/ShowcaseCarousel'
 import { HowItWorks } from '@/components/marketing/HowItWorks'
 import { FinalCta } from '@/components/marketing/FinalCta'
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Hero />
       <AppTeaser />
       <ProductPanels />
+      <RealisationSpotlight />
       <ShowcaseCarousel />
       <HowItWorks />
       <FinalCta />
