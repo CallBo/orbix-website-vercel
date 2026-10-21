@@ -135,6 +135,11 @@ const config: Config = {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
         },
+        // Lente avancée de la photo du Hero
+        kenburns: {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.1) translate(-1%, -1%)' },
+        },
         // Ligne de balayage qui descend dans le bouclier (tuile Cybersécurité)
         scan: {
           '0%, 100%': { transform: 'translateY(0)', opacity: '0' },
@@ -155,6 +160,7 @@ const config: Config = {
         'pulse-glow': 'pulse-glow 2.4s ease-in-out infinite',
         orbit: 'orbit 10s linear infinite',
         shimmer: 'shimmer 2s linear infinite',
+        kenburns: 'kenburns 24s ease-in-out infinite alternate',
       },
 
       backdropBlur: {

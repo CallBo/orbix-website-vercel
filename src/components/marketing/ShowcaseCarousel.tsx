@@ -1,17 +1,16 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Pause, Play } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { ACADEMY_URL } from '@/lib/constants'
 import { Reveal } from '@/components/ui/Reveal'
-import { LaptopFrame, PhoneFrame } from './Devices'
-import { AcademyScreen, DashboardScreen, InvoiceScreen, MessagesScreen } from './Screens'
 
 // Carrousel façon "Endless entertainment." d'apple.com : grandes cartes
-// sombres qui défilent seules (toutes les 5 s), la carte voisine dépasse
+// photo (Unsplash, licence libre) qui défilent seules (toutes les 5 s), la carte voisine dépasse
 // sur les côtés, points de pagination + bouton pause. Défilement natif
 // (scroll-snap), donc le glisser au doigt marche sans code en plus.
 // L'auto-défilement s'arrête si l'utilisateur a demandé moins d'animations.
@@ -20,34 +19,29 @@ const slides = [
   {
     label: 'Espace client',
     title: 'Tous vos projets. Un seul écran.',
-    text: 'Avancement, fichiers, échanges — en temps réel.',
+    text: 'Avancement, fichiers, échanges avec l’équipe — en temps réel.',
     cta: { label: 'Découvrir', href: '/auth/register' },
-    device: 'laptop' as const,
-    screen: <DashboardScreen />,
+    photo: '/photos/equipe.webp',
+    alt: 'Équipe réunie autour d’une table de réunion',
+    position: '50% 40%',
   },
   {
     label: 'Orbix Academy',
     title: 'Apprendre à coder. Pour de vrai.',
     text: 'Cours vidéo, exercices et suivi de progression.',
     cta: { label: 'Voir les cours', href: ACADEMY_URL },
-    device: 'phone' as const,
-    screen: <AcademyScreen />,
+    photo: '/photos/academy.webp',
+    alt: 'Étudiante travaillant sur son ordinateur portable',
+    position: '35% 35%',
   },
   {
-    label: 'Facturation',
+    label: 'Paiement mobile',
     title: 'Payer en un geste.',
     text: 'Mobile Money ou carte, factures toujours à jour.',
     cta: { label: 'En savoir plus', href: '/services' },
-    device: 'phone' as const,
-    screen: <InvoiceScreen />,
-  },
-  {
-    label: 'Messagerie',
-    title: 'L’équipe, à portée de message.',
-    text: 'Une conversation par projet, fichiers compris.',
-    cta: { label: 'En savoir plus', href: '/services' },
-    device: 'phone' as const,
-    screen: <MessagesScreen />,
+    photo: '/photos/telephone.webp',
+    alt: 'Homme souriant consultant son smartphone',
+    position: '50% 30%',
   },
 ]
 
@@ -112,30 +106,18 @@ export function ShowcaseCarousel() {
             key={s.label}
             className="relative h-[540px] w-[86vw] flex-shrink-0 snap-center overflow-hidden rounded-[28px] bg-black text-white md:h-[560px] md:w-[80vw] md:max-w-[1100px]"
           >
-            <div
-              className="pointer-events-none absolute inset-0"
-              style={{ background: 'radial-gradient(circle at 70% 30%, rgba(255,255,255,0.10), transparent 60%)' }}
+            <Image
+              src={s.photo}
+              alt={s.alt}
+              fill
+              sizes="(min-width: 768px) 80vw, 86vw"
+              className="object-cover"
+              style={{ objectPosition: s.position }}
             />
-
-            {/* Visuel produit, qui déborde vers le bas comme sur apple.com */}
-            <div
-              aria-hidden="true"
-              className={cn(
-                'absolute',
-                s.device === 'laptop'
-                  ? 'left-1/2 top-[8%] w-[92%] -translate-x-1/2 md:left-auto md:right-[-4%] md:top-[14%] md:w-[62%] md:translate-x-0'
-                  : 'left-1/2 top-[6%] -translate-x-1/2 md:left-auto md:right-[12%] md:top-[10%] md:translate-x-0'
-              )}
-            >
-              {s.device === 'laptop' ? (
-                <LaptopFrame>{s.screen}</LaptopFrame>
-              ) : (
-                <PhoneFrame className="w-[220px] md:w-[250px]">{s.screen}</PhoneFrame>
-              )}
-            </div>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent md:bg-gradient-to-r md:from-black/75 md:via-black/25 md:to-transparent" />
 
             {/* Texte, en bas à gauche, sur un fondu noir */}
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/85 to-transparent px-7 pb-8 pt-24 md:max-w-[50%] md:bg-none md:px-12 md:pb-12">
+            <div className="absolute inset-x-0 bottom-0 px-7 pb-8 md:max-w-[50%] md:px-12 md:pb-12">
               <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-white/55">{s.label}</p>
               <h3 className="mt-2 font-display text-[28px] font-semibold leading-[1.08] tracking-tighter md:text-[40px]">
                 {s.title}

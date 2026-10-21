@@ -1,58 +1,64 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 import { OrbixLogo } from '@/components/layout/OrbixLogo'
 import { Reveal } from '@/components/ui/Reveal'
-import { LaptopFrame, PhoneFrame } from './Devices'
-import { CodeScreen, ChatScreen, DashboardScreen } from './Screens'
-import { SecurityVisual, AutomationVisual } from './ServiceVisuals'
 
 // Page d'accueil construite comme apple.com : une succession de grands
-// panneaux pleine largeur, un par service, qui alternent gris très clair
-// (#f5f5f7) et noir. Chaque panneau suit la même grammaire : symbole Orbix
-// + nom du service en gros, une phrase, deux boutons pilule, puis un grand
-// visuel "produit" (interface Orbix dans un appareil) qui déborde vers le
-// bas. Sur ordinateur, les quatre derniers forment un damier 2 × 2.
-
-type Tone = 'light' | 'dark'
+// panneaux pleine largeur, un par service, avec une vraie photo en plein
+// fond (Unsplash, licence libre, voir public/photos/CREDITS.md). L'interface
+// reste noir / blanc / argent : la couleur vient uniquement des photos,
+// comme sur apple.com. Texte en bas sur un fondu sombre, pour garder les
+// sujets des photos visibles. Damier 2 × 2 sur ordinateur pour les quatre
+// derniers.
 
 type PanelProps = {
-  tone: Tone
   name: string
   tagline: string
+  photo: string
+  alt: string
+  position?: string
   primary: { label: string; href: string }
   secondary?: { label: string; href: string }
-  visual: React.ReactNode
   size: 'full' | 'half'
 }
 
-function Panel({ tone, name, tagline, primary, secondary, visual, size }: PanelProps) {
-  const dark = tone === 'dark'
+function Panel({ name, tagline, photo, alt, position = 'center', primary, secondary, size }: PanelProps) {
   const full = size === 'full'
 
   return (
     <section
       className={cn(
-        'relative flex flex-col items-center overflow-hidden text-center',
-        dark ? 'bg-black text-white' : 'bg-surface-overlay text-text-primary',
-        full ? 'min-h-[520px] pt-12 md:min-h-[720px] md:pt-16' : 'min-h-[460px] pt-11 md:min-h-[620px] md:pt-14'
+        'group relative flex flex-col items-center justify-end overflow-hidden bg-black text-center text-white',
+        full ? 'h-[600px] md:h-[720px]' : 'h-[520px] md:h-[620px]'
       )}
     >
-      <Reveal className="relative z-10 px-6">
+      <Image
+        src={photo}
+        alt={alt}
+        fill
+        sizes={full ? '100vw' : '(min-width: 768px) 50vw, 100vw'}
+        className="object-cover transition-transform duration-[1600ms] ease-apple group-hover:scale-[1.03]"
+        style={{ objectPosition: position }}
+      />
+      {/* Fondu pour la lisibilité du texte, discret en haut, fort en bas */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/10" />
+
+      <Reveal className={cn('relative z-10 px-6', full ? 'pb-14 md:pb-16' : 'pb-11 md:pb-14')}>
         <h2
           className={cn(
             'flex items-center justify-center gap-[0.18em] font-display font-semibold tracking-tighter',
-            full ? 'text-[40px] md:text-[56px]' : 'text-[36px] md:text-[44px]'
+            full ? 'text-[40px] md:text-[56px]' : 'text-[34px] md:text-[44px]'
           )}
         >
-          <OrbixLogo variant={dark ? 'mono' : 'default'} className="h-[0.78em]" />
+          <OrbixLogo variant="mono" className="h-[0.78em]" />
           {name}
         </h2>
         <p
           className={cn(
-            'mx-auto mt-1 max-w-md font-display tracking-tight',
-            full ? 'text-[21px] md:text-[28px]' : 'text-[19px] md:text-[24px]',
-            dark ? 'text-white/85' : 'text-text-primary/85'
+            'mx-auto mt-1 max-w-md font-display tracking-tight text-white/90',
+            full ? 'text-[21px] md:text-[28px]' : 'text-[19px] md:text-[24px]'
           )}
         >
           {tagline}
@@ -60,55 +66,21 @@ function Panel({ tone, name, tagline, primary, secondary, visual, size }: PanelP
         <div className="mt-5 flex items-center justify-center gap-3.5">
           <Link
             href={primary.href}
-            className={cn(
-              'whitespace-nowrap rounded-full px-[18px] py-[9px] text-[15px] font-normal transition-colors',
-              dark ? 'bg-white text-black hover:bg-white/85' : 'bg-ink-900 text-white hover:bg-ink-700'
-            )}
+            className="whitespace-nowrap rounded-full bg-white px-[18px] py-[9px] text-[15px] text-black transition-colors hover:bg-white/85"
           >
             {primary.label}
           </Link>
           {secondary && (
             <Link
               href={secondary.href}
-              className={cn(
-                'whitespace-nowrap rounded-full border px-[18px] py-[8px] text-[15px] font-normal transition-colors',
-                dark
-                  ? 'border-white/80 text-white hover:bg-white hover:text-black'
-                  : 'border-ink-900 text-ink-900 hover:bg-ink-900 hover:text-white'
-              )}
+              className="whitespace-nowrap rounded-full border border-white/85 px-[18px] py-[8px] text-[15px] text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-black"
             >
               {secondary.label}
             </Link>
           )}
         </div>
       </Reveal>
-
-      <Reveal delay={0.15} className={cn('relative mt-auto w-full px-4 md:px-6', full ? 'pt-10 md:pt-12' : 'pt-8 md:pt-10')}>
-        <div aria-hidden="true" className="translate-y-[6%]">
-          {visual}
-        </div>
-      </Reveal>
     </section>
-  )
-}
-
-function ModulesScreen() {
-  const mods = ['Paiements', 'Réservations', 'Blog', 'Chat', 'Factures', 'Agenda']
-  return (
-    <div className="grid grid-cols-2 gap-2 px-3.5">
-      {mods.map((m, i) => (
-        <div
-          key={m}
-          className={cn(
-            'flex aspect-square flex-col justify-between rounded-2xl p-2.5',
-            i === 0 ? 'bg-white text-black' : 'bg-white/[0.08] text-white'
-          )}
-        >
-          <span className={cn('h-5 w-5 rounded-md', i === 0 ? 'bg-black' : 'bg-white/30')} />
-          <span className="text-left text-[10px] font-medium">{m}</span>
-        </div>
-      ))}
-    </div>
   )
 }
 
@@ -119,87 +91,65 @@ export function ProductPanels() {
     <div className="space-y-3 bg-white p-3">
       <Panel
         size="full"
-        tone="light"
         name="Software"
         tagline="Votre idée. En production."
+        photo="/photos/software.webp"
+        alt="Développeur au casque travaillant sur du code devant son écran"
+        position="50% 40%"
         primary={{ label: 'Découvrir', href: '/services#software' }}
         secondary={contact}
-        visual={
-          <LaptopFrame>
-            <CodeScreen />
-          </LaptopFrame>
-        }
       />
 
       <Panel
         size="full"
-        tone="dark"
         name="AI"
         tagline="L’IA qui connaît votre entreprise."
+        photo="/photos/ai.webp"
+        alt="Homme concentré face à son écran d’ordinateur"
+        position="18% 35%"
         primary={{ label: 'Découvrir', href: '/services#ai' }}
         secondary={{ label: 'Essayer', href: '/auth/register' }}
-        visual={
-          <PhoneFrame className="w-[260px] md:w-[290px]">
-            <ChatScreen />
-          </PhoneFrame>
-        }
       />
 
       <div className="grid gap-3 md:grid-cols-2">
         <Panel
           size="half"
-          tone="light"
           name="Cloud"
           tagline="Toujours en ligne. Toujours surveillé."
+          photo="/photos/cloud.webp"
+          alt="Centre de données moderne aux armoires de serveurs blanches"
+          position="50% 30%"
           primary={{ label: 'Découvrir', href: '/services#cloud' }}
           secondary={contact}
-          visual={
-            <LaptopFrame className="max-w-[460px]">
-              <DashboardScreen />
-            </LaptopFrame>
-          }
         />
         <Panel
           size="half"
-          tone="dark"
           name="Sécurité"
           tagline="Vos systèmes. Sous protection."
+          photo="/photos/securite.webp"
+          alt="Baie de serveurs et équipements réseau"
+          position="40% 50%"
           primary={{ label: 'Découvrir', href: '/services#security' }}
           secondary={{ label: 'Audit', href: '/contact' }}
-          visual={
-            <div className="flex h-[260px] items-center justify-center pb-10">
-              <div className="scale-[2.2]">
-                <SecurityVisual />
-              </div>
-            </div>
-          }
         />
         <Panel
           size="half"
-          tone="dark"
           name="Automatisation"
           tagline="Moins de tâches. Plus de temps."
+          photo="/photos/automatisation.webp"
+          alt="Câbles réseau colorés connectés à des serveurs"
+          position="50% 50%"
           primary={{ label: 'Découvrir', href: '/services#automation' }}
           secondary={contact}
-          visual={
-            <div className="flex h-[260px] items-center justify-center pb-10">
-              <div className="scale-[1.9]">
-                <AutomationVisual />
-              </div>
-            </div>
-          }
         />
         <Panel
           size="half"
-          tone="light"
           name="Marketplace"
           tagline="Des modules prêts à brancher."
+          photo="/photos/commercante.webp"
+          alt="Commerçante souriante tenant son téléphone devant son étal"
+          position="45% 35%"
           primary={{ label: 'Découvrir', href: '/services#marketplace' }}
-          visual={
-            <PhoneFrame className="w-[230px]">
-              <ModulesScreen />
-            </PhoneFrame>
-          }
         />
       </div>
     </div>

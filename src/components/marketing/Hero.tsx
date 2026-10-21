@@ -5,31 +5,29 @@ import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/layout/Container'
 import { Button } from '@/components/ui/Button'
 import { OrbixLogo } from '@/components/layout/OrbixLogo'
-import { HeroOrbit } from './HeroOrbit'
 
-// Hero en bande sombre façon keynote : grand titre centré, logo en
-// filigrane, photo en fond (clavier rétroéclairé, noir brillant/argent)
-// assombrie par un dégradé, avec les anneaux orbitaux en surimpression
-// discrète pour la touche de mouvement et de marque. Contraste volontaire
-// avec le reste du site, désormais clair : c'est le seul "moment fort"
-// sombre de la page d'accueil, comme Apple le fait sur ses pages de
-// lancement — entièrement monochrome, aucune couleur de marque saturée.
+// Hero façon keynote : grand titre centré sur une vue aérienne de Cotonou
+// (Yanick Folly, Unsplash), qui avance très lentement (effet "Ken Burns")
+// pour donner du mouvement sans distraire. Un dégradé sombre garde le
+// texte blanc lisible tout en laissant voir la ville.
 export function Hero() {
   return (
-    <section className="ink-section relative isolate flex min-h-[92vh] items-center overflow-hidden pt-14">
-      <div className="duotone-ink absolute inset-0 -z-20">
+    <section className="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-black pt-14 text-white">
+      <div className="absolute inset-0 -z-20 overflow-hidden">
         <Image
-          src="/hero-keyboard.jpg"
-          alt=""
+          src="/photos/cotonou.webp"
+          alt="Vue aérienne de Cotonou"
           fill
           priority
           sizes="100vw"
-          className="scale-110 object-cover object-[70%_40%] opacity-60 blur-[2px]"
+          className="animate-kenburns object-cover object-[50%_60%]"
         />
       </div>
-      <div className="-z-10">
-        <HeroOrbit />
-      </div>
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-black/65 via-black/45 to-black/80" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{ background: 'radial-gradient(ellipse 55% 45% at 50% 58%, rgba(0,0,0,0.45), transparent 75%)' }}
+      />
 
       <Container className="relative flex flex-col items-center py-24 text-center md:py-32">
         <OrbixLogo variant="mono" className="mb-8 h-20 animate-fade-in md:h-28" />
@@ -40,7 +38,7 @@ export function Hero() {
           Tomorrow.
         </h1>
         <p
-          className="mt-7 max-w-xl animate-fade-in-up font-body text-lg leading-relaxed text-white/60 md:text-xl"
+          className="mt-7 max-w-xl animate-fade-in-up font-body text-lg leading-relaxed text-white/85 md:text-xl"
           style={{ animationDelay: '0.1s', animationFillMode: 'backwards' }}
         >
           La plateforme technologique pensée pour les entreprises africaines. Un espace
