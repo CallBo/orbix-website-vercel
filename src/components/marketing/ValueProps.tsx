@@ -1,6 +1,7 @@
 import { Rocket, Sparkles, ShieldCheck } from 'lucide-react'
 
 import { Container } from '@/components/layout/Container'
+import { Reveal } from '@/components/ui/Reveal'
 
 const props = [
   {
@@ -25,16 +26,16 @@ export function ValueProps() {
     <section className="border-y border-surface-border bg-surface-raised/40 py-16">
       <Container>
         <div className="grid gap-10 sm:grid-cols-3">
-          {props.map((prop) => (
-            <div key={prop.title} className="flex items-start gap-4">
-              <div className="rounded-xl border border-orbix-500/20 bg-orbix-500/10 p-2.5 text-orbix-400">
+          {props.map((prop, i) => (
+            <Reveal key={prop.title} delay={i * 0.08} className="flex items-start gap-4">
+              <div className="rounded-xl border border-orbix-500/20 bg-orbix-500/10 p-2.5 text-orbix-600">
                 <prop.icon className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-display text-base font-semibold text-white">{prop.title}</h3>
+                <h3 className="font-display text-base font-semibold text-text-primary">{prop.title}</h3>
                 <p className="mt-1 text-sm leading-relaxed text-text-secondary">{prop.description}</p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </Container>

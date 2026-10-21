@@ -1,10 +1,69 @@
-import Image from 'next/image'
+// Marque Orbix Labs : anneau orbital + satellite, dessinée en SVG inline
+// (plutôt qu'un PNG exporté) pour rester parfaitement nette à toute taille
+// et sur tous les écrans, et pour pouvoir changer de teinte selon le fond
+// (bleu Orbix sur fond clair, argenté sur les bandes sombres type keynote).
+//
+// `variant="mono"` donne la version claire (blanc/argenté), à utiliser sur
+// les sections sombres (Hero, bandeau CTA final, footer si jamais il
+// repasse en sombre). Par défaut, la version bleu Orbix pour le reste du
+// site, désormais clair.
+export function OrbixLogo({
+  className,
+  variant = 'default',
+}: {
+  className?: string
+  variant?: 'default' | 'mono'
+}) {
+  const ringId = variant === 'mono' ? 'orbix-ring-mono' : 'orbix-ring-blue'
+  const sphereId = variant === 'mono' ? 'orbix-sphere-mono' : 'orbix-sphere-blue'
 
-// Marque extraite depuis le logo officiel, recolorée en argenté/gris
-// métallisé (demande explicite : logo en rendu métallique, le reste du
-// site garde ses couleurs violettes) — la luminosité d'origine (donc tous
-// les reflets et ombres du rendu 3D) est conservée, seule la teinte a
-// changé. Fichier source : public/logo-mark.png.
-export function OrbixLogo({ className }: { className?: string }) {
-  return <Image src="/logo-mark.png" alt="Orbix Labs" width={131} height={100} priority className={className} />
+  return (
+    <svg viewBox="0 0 48 48" className={className} role="img" aria-label="Orbix Labs">
+      <defs>
+        <linearGradient id={ringId} x1="6" y1="10" x2="40" y2="38" gradientUnits="userSpaceOnUse">
+          {variant === 'mono' ? (
+            <>
+              <stop offset="0%" stopColor="#f5f5f7" />
+              <stop offset="100%" stopColor="#8e8e93" />
+            </>
+          ) : (
+            <>
+              <stop offset="0%" stopColor="#5790ff" />
+              <stop offset="100%" stopColor="#1f56d1" />
+            </>
+          )}
+        </linearGradient>
+        <radialGradient id={sphereId} cx="35%" cy="30%" r="75%">
+          {variant === 'mono' ? (
+            <>
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="100%" stopColor="#c7c7cc" />
+            </>
+          ) : (
+            <>
+              <stop offset="0%" stopColor="#bcd6ff" />
+              <stop offset="100%" stopColor="#2f6fed" />
+            </>
+          )}
+        </radialGradient>
+      </defs>
+
+      {/* Anneau orbital */}
+      <circle cx="21" cy="25" r="13.5" fill="none" stroke={`url(#${ringId})`} strokeWidth="4" />
+
+      {/* Trajectoire du satellite, passant devant l'anneau */}
+      <line
+        x1="7"
+        y1="33"
+        x2="38"
+        y2="12"
+        stroke={`url(#${ringId})`}
+        strokeWidth="3.2"
+        strokeLinecap="round"
+      />
+
+      {/* Satellite */}
+      <circle cx="38.5" cy="11.5" r="5.5" fill={`url(#${sphereId})`} />
+    </svg>
+  )
 }

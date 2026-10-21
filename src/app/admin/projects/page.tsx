@@ -25,7 +25,7 @@ export default async function AdminProjectsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-3xl font-bold text-white">Projets</h1>
+          <h1 className="font-display text-3xl font-bold text-text-primary">Projets</h1>
           <p className="mt-1 text-text-secondary">Tous les projets, tous clients confondus.</p>
         </div>
         <Button variant="gradient" asChild>

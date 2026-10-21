@@ -34,8 +34,8 @@ export function DashboardSidebar() {
     <aside className="hidden w-64 flex-shrink-0 flex-col border-r border-surface-border bg-surface-raised/40 md:flex">
       <Link href="/" className="flex items-center gap-2.5 px-6 py-6">
         <OrbixLogo className="h-7 w-auto" />
-        <span className="font-display text-base font-bold text-white">
-          Orbix <span className="text-orbix-400">Labs</span>
+        <span className="font-display text-base font-bold text-text-primary">
+          Orbix <span className="text-orbix-600">Labs</span>
         </span>
       </Link>
 
@@ -50,7 +50,7 @@ export function DashboardSidebar() {
                 'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                 active
                   ? 'bg-orbix-500/15 text-orbix-300'
-                  : 'text-text-secondary hover:bg-surface-overlay hover:text-white'
+                  : 'text-text-secondary hover:bg-surface-overlay hover:text-text-primary'
               )}
             >
               <link.icon className="h-4 w-4" />

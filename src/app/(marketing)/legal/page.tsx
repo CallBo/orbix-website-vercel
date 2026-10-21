@@ -10,7 +10,7 @@ export default function LegalPage() {
   return (
     <div className="py-32 md:py-40">
       <Container className="max-w-2xl">
-        <h1 className="font-display text-4xl font-bold tracking-tight text-white">Mentions légales</h1>
+        <h1 className="font-display text-4xl font-bold tracking-tight text-text-primary">Mentions légales</h1>
         <div className="mt-8 space-y-6 text-sm leading-relaxed text-text-secondary">
           <p>
             Orbix Labs SARL — Cotonou, Bénin. Contact : hello@orbixlabs.tech.

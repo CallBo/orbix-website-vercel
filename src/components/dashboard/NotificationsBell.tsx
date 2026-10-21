@@ -49,12 +49,12 @@ export function NotificationsBell() {
     <div className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="relative text-text-secondary hover:text-white"
+        className="relative text-text-secondary hover:text-text-primary"
         aria-label="Notifications"
       >
         <Bell className="h-5 w-5" />
         {notifications.length > 0 && (
-          <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-orbix-500 text-[10px] font-semibold text-white">
+          <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-orbix-500 text-[10px] font-semibold text-text-primary">
             {notifications.length > 9 ? '9+' : notifications.length}
           </span>
         )}
@@ -65,7 +65,7 @@ export function NotificationsBell() {
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div className="absolute right-0 z-50 mt-2 w-80 rounded-xl border border-surface-border bg-surface-raised shadow-modal">
             <div className="border-b border-surface-border px-4 py-3">
-              <p className="text-sm font-medium text-white">Notifications</p>
+              <p className="text-sm font-medium text-text-primary">Notifications</p>
             </div>
             <div className="max-h-80 overflow-y-auto">
               {notifications.length === 0 ? (
@@ -79,7 +79,7 @@ export function NotificationsBell() {
                       'block w-full border-b border-surface-border px-4 py-3 text-left last:border-b-0 hover:bg-surface-overlay'
                     )}
                   >
-                    <p className="line-clamp-2 text-sm text-white">{notification.content}</p>
+                    <p className="line-clamp-2 text-sm text-text-primary">{notification.content}</p>
                     <p className="mt-1 text-xs text-text-muted">{formatRelativeTime(notification.createdAt)}</p>
                   </button>
                 ))

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ForgotPasswordPage() {
   return (
     <div className="w-full max-w-sm rounded-2xl border border-surface-border bg-surface-raised p-8 text-center">
-      <h1 className="font-display text-lg font-semibold text-white">Mot de passe oublié</h1>
+      <h1 className="font-display text-lg font-semibold text-text-primary">Mot de passe oublié</h1>
       <p className="mt-2 text-sm text-text-secondary">
         La réinitialisation se fait depuis l&apos;écran de connexion, en cliquant sur
         « Mot de passe oublié ? ».

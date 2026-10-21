@@ -42,8 +42,8 @@ export function ProjectsFilterList({ projects, href, linkToDetail }: ProjectsFil
             className={cn(
               'rounded-full px-4 py-1.5 text-sm font-medium transition-colors',
               activeFilter === index
-                ? 'bg-orbix-500 text-white'
-                : 'bg-surface-raised text-text-secondary hover:text-white'
+                ? 'bg-orbix-500 text-text-primary'
+                : 'bg-surface-raised text-text-secondary hover:text-text-primary'
             )}
           >
             {filter.label}

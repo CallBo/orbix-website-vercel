@@ -3,37 +3,52 @@ import { ArrowRight } from 'lucide-react'
 
 import { Container } from '@/components/layout/Container'
 import { Button } from '@/components/ui/Button'
+import { OrbixLogo } from '@/components/layout/OrbixLogo'
 import { AmbientVideo } from './AmbientVideo'
 
+// Hero en bande sombre façon keynote : grand titre centré, logo en filigrane
+// lumineux, vidéo d'ambiance assourdie en fond. Contraste volontaire avec
+// le reste du site, désormais clair — c'est le seul "moment fort" sombre
+// de la page d'accueil, comme Apple le fait sur ses pages de lancement.
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[92vh] items-center overflow-hidden pt-16">
-      <div className="duotone-violet absolute inset-0 -z-10">
-        <AmbientVideo src="/hero-bg.mp4" poster="/hero-bg-poster.jpg" className="h-full w-full object-cover" />
+    <section className="ink-section relative isolate flex min-h-[92vh] items-center overflow-hidden pt-14">
+      <div className="duotone-ink absolute inset-0 -z-10">
+        <AmbientVideo src="/hero-bg.mp4" poster="/hero-bg-poster.jpg" className="h-full w-full object-cover opacity-60" />
       </div>
 
-      <Container className="relative py-24 md:py-32">
-        <div className="max-w-2xl">
-          <h1 className="font-display text-5xl font-bold leading-none tracking-tight text-white md:text-7xl">
-            Engineering
-            <br />
-            Tomorrow.
-          </h1>
-          <p className="mt-6 max-w-lg font-body text-lg leading-relaxed text-text-secondary">
-            La plateforme technologique pensée pour les entreprises africaines. Un
-            espace unique pour suivre vos projets, discuter avec notre équipe et payer
-            vos factures.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button variant="gradient" size="xl" asChild>
-              <Link href="/auth/register">
-                Get Started <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="secondary" size="xl" asChild>
-              <Link href="/services">Voir nos services</Link>
-            </Button>
-          </div>
+      <Container className="relative flex flex-col items-center py-24 text-center md:py-32">
+        <OrbixLogo variant="mono" className="mb-8 h-16 w-16 animate-fade-in md:h-20 md:w-20" />
+
+        <h1 className="animate-fade-in-up font-display text-5xl font-bold leading-[0.95] tracking-tightest text-text-inverse md:text-7xl lg:text-8xl">
+          Engineering
+          <br />
+          Tomorrow.
+        </h1>
+        <p
+          className="mt-7 max-w-xl animate-fade-in-up font-body text-lg leading-relaxed text-white/60 md:text-xl"
+          style={{ animationDelay: '0.1s', animationFillMode: 'backwards' }}
+        >
+          La plateforme technologique pensée pour les entreprises africaines. Un espace
+          unique pour suivre vos projets, discuter avec notre équipe et payer vos factures.
+        </p>
+        <div
+          className="mt-10 flex animate-fade-in-up flex-wrap items-center justify-center gap-4"
+          style={{ animationDelay: '0.2s', animationFillMode: 'backwards' }}
+        >
+          <Button variant="primary" size="xl" asChild>
+            <Link href="/auth/register">
+              Get Started <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+          <Button
+            variant="ghost"
+            size="xl"
+            asChild
+            className="text-text-inverse hover:bg-white/10 hover:text-text-inverse"
+          >
+            <Link href="/services">Voir nos services</Link>
+          </Button>
         </div>
       </Container>
     </section>

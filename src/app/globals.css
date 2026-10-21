@@ -2,21 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Thème clair et minimaliste, dans l'esprit apple.com : fond quasi blanc,
+   texte proche du noir, le bleu Orbix comme unique accent de marque.
+   Les sections "ink" (bandes sombres façon keynote) restent disponibles
+   via les utilitaires .ink-section / .duotone-ink plus bas pour les
+   moments forts (hero, CTA finale), comme sur apple.com. */
 :root {
-  --color-primary: #7b30ff;
-  --color-secondary: #a855f7;
-  --color-cyan: #00d4ff;
+  --color-primary: #2f6fed;
+  --color-secondary: #1f56d1;
 
-  --surface-base: #0a0a0f;
-  --surface-raised: #0d0d14;
-  --surface-overlay: #12121c;
-  --surface-border: #1a1a2e;
-  --surface-muted: #1e1e30;
+  --surface-base: #ffffff;
+  --surface-raised: #fbfbfd;
+  --surface-overlay: #f5f5f7;
+  --surface-border: #d2d2d7;
+  --surface-muted: #e8e8ed;
 
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0b8;
-  --text-muted: #6b6b80;
-  --text-disabled: #3a3a4a;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-muted: #86868b;
+  --text-disabled: #c7c7cc;
 }
 
 @layer base {
@@ -25,78 +29,99 @@
   }
 
   html {
-    color-scheme: dark;
+    color-scheme: light;
+    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-surface-base text-text-primary font-body antialiased;
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+
   ::selection {
-    background-color: rgba(123, 48, 255, 0.35);
-    color: #ffffff;
+    background-color: rgba(47, 111, 237, 0.18);
+    color: #1d1d1f;
   }
 
   :focus-visible {
-    outline: 2px solid #7b30ff;
+    outline: 2px solid #2f6fed;
     outline-offset: 2px;
   }
 }
 
 @layer utilities {
-  .gradient-primary {
-    background: linear-gradient(135deg, #7b30ff 0%, #a855f7 50%, #00d4ff 100%);
-  }
-
+  /* ─── Texte en accent bleu (titres, mots-clés) ─────────────── */
   .gradient-text {
-    background: linear-gradient(135deg, #7b30ff, #00d4ff);
+    background: linear-gradient(135deg, #2f6fed, #1f56d1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  .gradient-primary {
+    background: linear-gradient(135deg, #2f6fed 0%, #1f56d1 100%);
+  }
+
   .gradient-border {
-    background: linear-gradient(#0d0d14, #0d0d14) padding-box,
-      linear-gradient(135deg, #7b30ff, #00d4ff) border-box;
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+      linear-gradient(135deg, #2f6fed, #1f56d1) border-box;
     border: 1px solid transparent;
   }
 
-  .glow-purple {
-    box-shadow: 0 0 30px rgba(123, 48, 255, 0.4), 0 0 60px rgba(123, 48, 255, 0.1);
+  .glow-orbix {
+    box-shadow: 0 0 30px rgba(47, 111, 237, 0.2), 0 0 60px rgba(47, 111, 237, 0.08);
   }
 
+  /* ─── Verre dépoli, version claire (nav flottante au scroll) ── */
   .glass {
-    background: rgba(13, 13, 20, 0.6);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .glass-strong {
-    background: rgba(13, 13, 20, 0.85);
-    backdrop-filter: blur(24px);
-    border: 1px solid rgba(123, 48, 255, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: saturate(180%) blur(24px);
+    -webkit-backdrop-filter: saturate(180%) blur(24px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
   }
 
-  /* Overlay appliqué sur les vidéos/photos pour garder une teinte violette
-     cohérente quelle que soit la source (voir Hero). Va du violet en haut
-     au quasi-noir en bas, ce qui se fond naturellement dans le thème sombre.
-     Pas de `position` ici : l'élément qui porte cette classe doit déjà être
-     positionné par ailleurs (ex. Tailwind `absolute`) — en déclarer une ici
-     entrait en conflit avec `.absolute` selon l'ordre du CSS compilé et
-     cassait le positionnement (vidéo réduite à sa taille naturelle au lieu
-     de couvrir toute la section). */
-  .duotone-violet::after {
+  /* ─── Bandes sombres façon keynote, pour les moments forts ──── */
+  .ink-section {
+    background: #000000;
+    color: #f5f5f7;
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Overlay appliqué sur les vidéos/photos du hero sombre : dégradé du
+     noir profond vers un bleu Orbix très sourd, pour garder la lisibilité
+     du texte blanc sans recréer l'ancien ton violet. Pas de `position`
+     ici : l'élément qui porte cette classe doit déjà être positionné
+     (ex. Tailwind `absolute`). */
+  .duotone-ink::after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      160deg,
-      rgba(90, 18, 201, 0.75) 0%,
-      rgba(37, 15, 74, 0.72) 45%,
-      rgba(10, 10, 15, 0.9) 100%
+      165deg,
+      rgba(8, 10, 20, 0.92) 0%,
+      rgba(10, 14, 28, 0.88) 45%,
+      rgba(0, 0, 0, 0.96) 100%
     );
-    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
   }
 }
 

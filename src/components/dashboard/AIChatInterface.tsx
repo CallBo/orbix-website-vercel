@@ -59,14 +59,14 @@ export function AIChatInterface() {
         {messages.map((message, index) => (
           <div key={index} className={cn('flex', message.role === 'user' ? 'justify-end' : 'justify-start')}>
             {message.role === 'assistant' && (
-              <div className="mr-2 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-orbix-500/15 text-orbix-400">
+              <div className="mr-2 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-orbix-500/15 text-orbix-600">
                 <Sparkles className="h-3.5 w-3.5" />
               </div>
             )}
             <div
               className={cn(
                 'max-w-[75%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm',
-                message.role === 'user' ? 'bg-orbix-500 text-white' : 'bg-surface-overlay text-white'
+                message.role === 'user' ? 'bg-orbix-500 text-text-primary' : 'bg-surface-overlay text-text-primary'
               )}
             >
               {message.content}
@@ -86,7 +86,7 @@ export function AIChatInterface() {
             <button
               key={s}
               onClick={() => send(s)}
-              className="rounded-full border border-surface-border bg-surface-overlay px-3 py-1.5 text-xs text-text-secondary hover:text-white"
+              className="rounded-full border border-surface-border bg-surface-overlay px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary"
             >
               {s}
             </button>
@@ -101,7 +101,7 @@ export function AIChatInterface() {
           onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), send(input))}
           placeholder="Pose ta question…"
           rows={1}
-          className="flex-1 resize-none rounded-xl border border-surface-border bg-surface-base px-4 py-2.5 text-sm text-white placeholder:text-text-muted focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
+          className="flex-1 resize-none rounded-xl border border-surface-border bg-surface-base px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
         />
         <Button size="icon" variant="primary" onClick={() => send(input)} loading={loading} disabled={!input.trim()}>
           <Send className="h-4 w-4" />

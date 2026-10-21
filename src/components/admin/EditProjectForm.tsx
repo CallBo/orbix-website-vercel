@@ -68,7 +68,7 @@ export function EditProjectForm({ project }: { project: ApiProject }) {
         <label className="block text-sm font-medium text-text-secondary">Statut</label>
         <select
           {...register('status')}
-          className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 text-sm text-white focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
+          className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 text-sm text-text-primary focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
         >
           {Object.entries(statusLabels).map(([value, label]) => (
             <option key={value} value={value} className="bg-surface-raised">

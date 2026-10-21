@@ -33,7 +33,7 @@ export function ProjectMessagesLayout({ projects, currentUserName }: ProjectMess
               'w-full truncate rounded-xl px-3 py-2.5 text-left text-sm font-medium transition-colors',
               selectedId === project.id
                 ? 'bg-orbix-500/15 text-orbix-300'
-                : 'text-text-secondary hover:bg-surface-overlay hover:text-white'
+                : 'text-text-secondary hover:bg-surface-overlay hover:text-text-primary'
             )}
           >
             {project.title}

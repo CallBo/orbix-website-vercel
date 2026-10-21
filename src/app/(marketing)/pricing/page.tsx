@@ -34,7 +34,7 @@ export default function PricingPage() {
   return (
     <div className="pt-32 md:pt-40">
       <Container className="max-w-2xl">
-        <h1 className="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">Tarifs</h1>
+        <h1 className="font-display text-4xl font-bold tracking-tight text-text-primary md:text-5xl">Tarifs</h1>
         <p className="mt-4 text-base leading-relaxed text-text-secondary">
           Pas de grille figée : chaque devis part d’un brief réel. Voici les repères de
           base.
@@ -44,11 +44,11 @@ export default function PricingPage() {
       <PricingSection />
 
       <Container className="max-w-2xl py-24 md:py-32">
-        <h2 className="font-display text-2xl font-semibold text-white">Questions fréquentes</h2>
+        <h2 className="font-display text-2xl font-semibold text-text-primary">Questions fréquentes</h2>
         <div className="mt-8 space-y-6">
           {faqs.map((faq) => (
             <div key={faq.question} className="border-b border-surface-border pb-6 last:border-b-0">
-              <p className="font-medium text-white">{faq.question}</p>
+              <p className="font-medium text-text-primary">{faq.question}</p>
               <p className="mt-2 text-sm leading-relaxed text-text-secondary">{faq.answer}</p>
             </div>
           ))}

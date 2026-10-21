@@ -7,42 +7,46 @@ const config: Config = {
   theme: {
     extend: {
       // ─── COULEURS ─────────────────────────────────────────
+      // Palette claire et minimaliste (identité "Engineering Tomorrow" :
+      // anneau orbital bleu + sphère argentée). Le bleu Orbix remplace le
+      // violet d'origine comme unique couleur de marque ; le reste du site
+      // est en niveaux de gris quasi neutres, dans l'esprit apple.com.
       colors: {
         orbix: {
-          50: '#f3f0ff',
-          100: '#e9e3ff',
-          200: '#d4cbff',
-          300: '#b8a5ff',
-          400: '#9b7bff',
-          500: '#7b30ff',
-          600: '#6b1fe8',
-          700: '#5a12c9',
-          800: '#4a0fa4',
-          900: '#3d0e85',
+          50: '#eef4ff',
+          100: '#dbe7ff',
+          200: '#b8d0ff',
+          300: '#8ab1ff',
+          400: '#5790ff',
+          500: '#2f6fed',
+          600: '#1f56d1',
+          700: '#1942a8',
+          800: '#173686',
+          900: '#152f6b',
         },
-        violet: {
-          500: '#a855f7',
-        },
-        cyan: {
-          400: '#00d4ff',
+        ink: {
+          900: '#000000',
+          800: '#0b0b0c',
+          700: '#1d1d1f',
         },
         surface: {
-          base: '#0a0a0f',
-          raised: '#0d0d14',
-          overlay: '#12121c',
-          border: '#1a1a2e',
-          muted: '#1e1e30',
+          base: '#ffffff',
+          raised: '#fbfbfd',
+          overlay: '#f5f5f7',
+          border: '#d2d2d7',
+          muted: '#e8e8ed',
         },
         text: {
-          primary: '#ffffff',
-          secondary: '#a0a0b8',
-          muted: '#6b6b80',
-          disabled: '#3a3a4a',
+          primary: '#1d1d1f',
+          secondary: '#6e6e73',
+          muted: '#86868b',
+          disabled: '#c7c7cc',
+          inverse: '#ffffff',
         },
         success: '#10b981',
         warning: '#f59e0b',
         error: '#ef4444',
-        info: '#3b82f6',
+        info: '#2f6fed',
       },
 
       // ─── TYPOGRAPHIE ──────────────────────────────────────
@@ -50,6 +54,11 @@ const config: Config = {
         display: ['var(--font-display)', ...fontFamily.sans],
         body: ['var(--font-body)', ...fontFamily.sans],
         mono: ['var(--font-mono)', ...fontFamily.mono],
+      },
+      letterSpacing: {
+        tightest: '-0.045em',
+        tighter: '-0.03em',
+        tight: '-0.015em',
       },
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1rem' }],
@@ -84,18 +93,29 @@ const config: Config = {
       },
 
       // ─── OMBRES ───────────────────────────────────────────
+      // Ombres douces et peu contrastées (esprit apple.com : la profondeur
+      // vient du flou, pas de la couleur).
       boxShadow: {
-        'glow-purple': '0 0 20px rgba(123, 48, 255, 0.3)',
-        'glow-cyan': '0 0 20px rgba(0, 212, 255, 0.3)',
-        card: '0 4px 24px rgba(0, 0, 0, 0.4)',
-        'card-hover': '0 8px 40px rgba(123, 48, 255, 0.2)',
-        modal: '0 25px 60px rgba(0, 0, 0, 0.8)',
+        'glow-orbix': '0 0 24px rgba(47, 111, 237, 0.25)',
+        subtle: '0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.03)',
+        card: '0 2px 10px rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 20px 48px rgba(0, 0, 0, 0.12)',
+        modal: '0 25px 60px rgba(0, 0, 0, 0.25)',
+        nav: '0 1px 0 rgba(0, 0, 0, 0.06)',
       },
 
       // ─── ANIMATIONS ───────────────────────────────────────
+      transitionTimingFunction: {
+        apple: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        'apple-out': 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
       keyframes: {
         'fade-in': {
-          '0%': { opacity: '0', transform: 'translateY(8px)' },
+          '0%': { opacity: '0', transform: 'translateY(12px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(28px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         'slide-in': {
@@ -103,8 +123,8 @@ const config: Config = {
           '100%': { transform: 'translateX(0)' },
         },
         'pulse-glow': {
-          '0%, 100%': { boxShadow: '0 0 10px rgba(123, 48, 255, 0.3)' },
-          '50%': { boxShadow: '0 0 30px rgba(123, 48, 255, 0.6)' },
+          '0%, 100%': { boxShadow: '0 0 10px rgba(47, 111, 237, 0.25)' },
+          '50%': { boxShadow: '0 0 26px rgba(47, 111, 237, 0.5)' },
         },
         orbit: {
           '0%': { transform: 'rotate(0deg)' },
@@ -116,10 +136,11 @@ const config: Config = {
         },
       },
       animation: {
-        'fade-in': 'fade-in 0.3s ease-out',
+        'fade-in': 'fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+        'fade-in-up': 'fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
         'slide-in': 'slide-in 0.3s ease-out',
-        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-        orbit: 'orbit 8s linear infinite',
+        'pulse-glow': 'pulse-glow 2.4s ease-in-out infinite',
+        orbit: 'orbit 10s linear infinite',
         shimmer: 'shimmer 2s linear infinite',
       },
 

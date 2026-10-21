@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowRight, Code2, Sparkles, Cloud, ShieldCheck, Workflow, ShoppingBag } from 'lucide-react'
 
 import { Container } from '@/components/layout/Container'
+import { Reveal } from '@/components/ui/Reveal'
 
 const services = [
   {
@@ -46,37 +47,38 @@ export function ServicesGrid() {
   return (
     <section id="services" className="py-24 md:py-32">
       <Container>
-        <div className="max-w-2xl">
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-white md:text-4xl">Nos services</h2>
+        <Reveal className="max-w-2xl">
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-text-primary md:text-4xl">Nos services</h2>
           <p className="mt-4 text-base leading-relaxed text-text-secondary">
             Six domaines d’intervention, une seule équipe qui les connecte.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <Link
-              key={service.title}
-              href={service.href}
-              className="group relative overflow-hidden rounded-2xl border border-surface-border bg-surface-raised p-8 transition-all duration-300 hover:-translate-y-1 hover:border-orbix-500/40"
-            >
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orbix-500/0 to-cyan-400/0 transition-all duration-500 group-hover:from-orbix-500/5 group-hover:to-cyan-400/5" />
+          {services.map((service, i) => (
+            <Reveal key={service.title} delay={(i % 3) * 0.08}>
+              <Link
+                href={service.href}
+                className="group relative block h-full overflow-hidden rounded-2xl border border-surface-border bg-surface-raised p-8 transition-all duration-300 ease-apple hover:-translate-y-1 hover:border-orbix-500/40 hover:shadow-card-hover"
+              >
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orbix-500/0 to-orbix-500/0 transition-all duration-500 group-hover:from-orbix-500/5 group-hover:to-transparent" />
 
-              <div className="relative mb-6 inline-flex rounded-xl border border-orbix-500/20 bg-orbix-500/10 p-3 text-orbix-400">
-                <service.icon className="h-5 w-5" />
-              </div>
+                <div className="relative mb-6 inline-flex rounded-xl border border-orbix-500/20 bg-orbix-500/10 p-3 text-orbix-600">
+                  <service.icon className="h-5 w-5" />
+                </div>
 
-              <h3 className="relative font-display text-xl font-semibold text-white transition-colors group-hover:text-orbix-300">
-                {service.title}
-              </h3>
+                <h3 className="relative font-display text-xl font-semibold text-text-primary transition-colors group-hover:text-orbix-600">
+                  {service.title}
+                </h3>
 
-              <p className="relative mt-3 text-sm leading-relaxed text-text-secondary">{service.description}</p>
+                <p className="relative mt-3 text-sm leading-relaxed text-text-secondary">{service.description}</p>
 
-              <div className="relative mt-6 flex items-center text-sm font-medium text-orbix-400 transition-colors group-hover:text-orbix-300">
-                En savoir plus
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </div>
-            </Link>
+                <div className="relative mt-6 flex items-center text-sm font-medium text-orbix-600">
+                  En savoir plus
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </Container>

@@ -25,7 +25,7 @@ export default async function AdminAcademyPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-3xl font-bold text-white">Academy — Cours</h1>
+          <h1 className="font-display text-3xl font-bold text-text-primary">Academy — Cours</h1>
           <p className="mt-1 text-text-secondary">
             Gestion du contenu consommé par orbix-academy via l&apos;API.
           </p>
@@ -43,7 +43,7 @@ export default async function AdminAcademyPage() {
         </Card>
       ) : courses.length === 0 ? (
         <Card className="text-sm text-text-secondary">
-          Aucun cours pour l&apos;instant. <Link href="/admin/academy/new" className="text-orbix-400 hover:text-orbix-300">Créer le premier</Link>.
+          Aucun cours pour l&apos;instant. <Link href="/admin/academy/new" className="text-orbix-600 hover:text-orbix-300">Créer le premier</Link>.
         </Card>
       ) : (
         <div className="space-y-3">
@@ -59,7 +59,7 @@ export default async function AdminAcademyPage() {
                       <Badge size="sm">{course.category}</Badge>
                       <Badge size="sm">{course.level}</Badge>
                     </div>
-                    <h3 className="mt-2 font-display text-base font-semibold text-white">{course.title}</h3>
+                    <h3 className="mt-2 font-display text-base font-semibold text-text-primary">{course.title}</h3>
                     <p className="mt-1 text-xs text-text-muted">
                       {course.modules.length} module{course.modules.length > 1 ? 's' : ''} ·{' '}
                       {course.modules.reduce((sum, m) => sum + m.lessons.length, 0)} leçon(s)

@@ -29,7 +29,7 @@ export default async function EditBlogPostPage({ params }: EditBlogPostPageProps
 
   return (
     <div className="max-w-2xl space-y-6">
-      <h1 className="font-display text-3xl font-bold text-white">Modifier l&apos;article</h1>
+      <h1 className="font-display text-3xl font-bold text-text-primary">Modifier l&apos;article</h1>
       <BlogPostForm mode="edit" post={post} />
     </div>
   )

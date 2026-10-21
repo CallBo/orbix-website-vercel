@@ -30,7 +30,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             className={cn(
               'w-full rounded-xl border bg-surface-raised px-4 py-3',
-              'font-body text-sm text-white placeholder:text-text-muted',
+              'font-body text-sm text-text-primary placeholder:text-text-muted',
               'transition-all duration-200',
               'focus:outline-none focus:ring-2 focus:ring-orbix-500/50 focus:border-orbix-500',
               error ? 'border-error/50 focus:ring-error/30' : 'border-surface-border hover:border-surface-muted',

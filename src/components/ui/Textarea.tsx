@@ -21,7 +21,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           className={cn(
             'min-h-[120px] w-full resize-y rounded-xl border bg-surface-raised px-4 py-3',
-            'font-body text-sm text-white placeholder:text-text-muted',
+            'font-body text-sm text-text-primary placeholder:text-text-muted',
             'transition-all duration-200',
             'focus:outline-none focus:ring-2 focus:ring-orbix-500/50 focus:border-orbix-500',
             error ? 'border-error/50' : 'border-surface-border hover:border-surface-muted',

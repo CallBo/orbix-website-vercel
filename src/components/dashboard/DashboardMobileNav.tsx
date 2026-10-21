@@ -50,7 +50,7 @@ export function DashboardMobileNav() {
                 onClick={() => setOpen(false)}
                 className={cn(
                   'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium',
-                  active ? 'bg-orbix-500/15 text-orbix-300' : 'text-text-secondary hover:bg-surface-overlay hover:text-white'
+                  active ? 'bg-orbix-500/15 text-orbix-300' : 'text-text-secondary hover:bg-surface-overlay hover:text-text-primary'
                 )}
               >
                 <link.icon className="h-4 w-4" />

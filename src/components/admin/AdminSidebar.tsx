@@ -26,8 +26,8 @@ export function AdminSidebar() {
       <Link href="/" className="flex items-center gap-2.5 px-6 py-6">
         <OrbixLogo className="h-7 w-auto" />
         <div>
-          <span className="block font-display text-base font-bold text-white">
-            Orbix <span className="text-orbix-400">Labs</span>
+          <span className="block font-display text-base font-bold text-text-primary">
+            Orbix <span className="text-orbix-600">Labs</span>
           </span>
           <Badge variant="primary" size="sm" className="mt-1">
             Admin
@@ -46,7 +46,7 @@ export function AdminSidebar() {
                 'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                 active
                   ? 'bg-orbix-500/15 text-orbix-300'
-                  : 'text-text-secondary hover:bg-surface-overlay hover:text-white'
+                  : 'text-text-secondary hover:bg-surface-overlay hover:text-text-primary'
               )}
             >
               <link.icon className="h-4 w-4" />
@@ -58,7 +58,7 @@ export function AdminSidebar() {
 
       <div className="flex items-center gap-3 border-t border-surface-border px-6 py-4">
         <UserButton afterSignOutUrl="/" />
-        <Link href="/dashboard" className="text-sm text-text-secondary hover:text-white">
+        <Link href="/dashboard" className="text-sm text-text-secondary hover:text-text-primary">
           Vue client →
         </Link>
       </div>

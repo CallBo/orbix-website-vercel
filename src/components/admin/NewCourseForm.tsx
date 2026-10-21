@@ -82,7 +82,7 @@ export function NewCourseForm() {
           <label className="block text-sm font-medium text-text-secondary">Catégorie</label>
           <select
             {...register('category')}
-            className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 text-sm text-white focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
+            className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 text-sm text-text-primary focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
           >
             <option value="IA" className="bg-surface-raised">IA</option>
             <option value="PROGRAMMATION" className="bg-surface-raised">Programmation</option>
@@ -96,7 +96,7 @@ export function NewCourseForm() {
           <label className="block text-sm font-medium text-text-secondary">Niveau</label>
           <select
             {...register('level')}
-            className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 text-sm text-white focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
+            className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 text-sm text-text-primary focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
           >
             <option value="DEBUTANT" className="bg-surface-raised">Débutant</option>
             <option value="INTERMEDIAIRE" className="bg-surface-raised">Intermédiaire</option>
@@ -109,7 +109,7 @@ export function NewCourseForm() {
         <label className="block text-sm font-medium text-text-secondary">Tarif</label>
         <select
           {...register('isFree')}
-          className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 text-sm text-white focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
+          className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 text-sm text-text-primary focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
         >
           <option value="true" className="bg-surface-raised">Gratuit</option>
           <option value="false" className="bg-surface-raised">Payant</option>

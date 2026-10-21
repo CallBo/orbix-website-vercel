@@ -55,7 +55,7 @@ export function ContactForm() {
   if (submitted) {
     return (
       <div className="rounded-2xl border border-success/20 bg-success/5 p-8 text-center">
-        <p className="font-display text-lg font-semibold text-white">Demande envoyée</p>
+        <p className="font-display text-lg font-semibold text-text-primary">Demande envoyée</p>
         <p className="mt-2 text-sm text-text-secondary">
           Notre équipe vous répond sous 24h ouvrées à l&apos;adresse indiquée.
         </p>
@@ -79,13 +79,13 @@ export function ContactForm() {
         <select
           {...register('service')}
           defaultValue=""
-          className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 font-body text-sm text-white transition-all duration-200 hover:border-surface-muted focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
+          className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 font-body text-sm text-text-primary transition-all duration-200 hover:border-surface-muted focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
         >
           <option value="" disabled className="bg-surface-raised">
             Sélectionnez un service
           </option>
           {services.map((service) => (
-            <option key={service} value={service} className="bg-surface-raised text-white">
+            <option key={service} value={service} className="bg-surface-raised text-text-primary">
               {service}
             </option>
           ))}

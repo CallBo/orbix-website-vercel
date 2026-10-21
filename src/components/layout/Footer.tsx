@@ -22,14 +22,14 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-surface-border bg-surface-base">
+    <footer className="border-t border-surface-border bg-surface-overlay">
       <Container className="py-16">
         <div className="flex flex-col gap-12 md:flex-row md:justify-between">
           <div className="max-w-xs">
             <Link href="/" className="flex items-center gap-2.5">
               <OrbixLogo className="h-7 w-auto" />
-              <span className="font-display text-base font-bold text-white">
-                Orbix <span className="text-orbix-400">Labs</span>
+              <span className="font-display text-base font-semibold tracking-tight text-text-primary">
+                Orbix <span className="text-orbix-600">Labs</span>
               </span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-text-muted">
@@ -40,11 +40,11 @@ export function Footer() {
 
           <div className="flex gap-16">
             <div>
-              <p className="text-sm font-medium text-white">Navigation</p>
+              <p className="text-sm font-medium text-text-primary">Navigation</p>
               <ul className="mt-4 space-y-3">
                 {footerLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-text-muted transition-colors hover:text-white">
+                    <Link href={link.href} className="text-sm text-text-muted transition-colors hover:text-text-primary">
                       {link.label}
                     </Link>
                   </li>
@@ -53,10 +53,10 @@ export function Footer() {
             </div>
 
             <div>
-              <p className="text-sm font-medium text-white">Contact</p>
+              <p className="text-sm font-medium text-text-primary">Contact</p>
               <ul className="mt-4 space-y-3 text-sm text-text-muted">
                 <li>
-                  <a href="mailto:hello@orbixlabs.tech" className="transition-colors hover:text-white">
+                  <a href="mailto:hello@orbixlabs.tech" className="transition-colors hover:text-text-primary">
                     hello@orbixlabs.tech
                   </a>
                 </li>
@@ -76,7 +76,7 @@ export function Footer() {
                 aria-label={social.label}
                 target="_blank"
                 rel="noreferrer"
-                className="text-text-muted transition-colors hover:text-orbix-400"
+                className="text-text-muted transition-colors hover:text-orbix-600"
               >
                 <social.icon className="h-4.5 w-4.5" />
               </a>

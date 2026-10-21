@@ -32,7 +32,7 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-display text-3xl font-bold text-white">
+        <h1 className="font-display text-3xl font-bold text-text-primary">
           Bonjour, {user?.firstName ?? 'vous'} 👋
         </h1>
         <p className="mt-1 text-text-secondary">Voici où en sont vos projets aujourd&apos;hui.</p>
@@ -53,8 +53,8 @@ export default async function DashboardPage() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="font-display text-xl font-semibold text-white">Mes projets actifs</h2>
-          <Link href="/dashboard/projects" className="text-sm font-medium text-orbix-400 hover:text-orbix-300">
+          <h2 className="font-display text-xl font-semibold text-text-primary">Mes projets actifs</h2>
+          <Link href="/dashboard/projects" className="text-sm font-medium text-orbix-600 hover:text-orbix-300">
             Voir tout →
           </Link>
         </div>
@@ -71,7 +71,7 @@ export default async function DashboardPage() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         <section>
-          <h2 className="mb-4 font-display text-xl font-semibold text-white">Factures</h2>
+          <h2 className="mb-4 font-display text-xl font-semibold text-text-primary">Factures</h2>
           <Card className="divide-y divide-surface-border p-0">
             {invoices.length === 0 ? (
               <p className="p-6 text-sm text-text-muted">Aucune facture pour l&apos;instant.</p>
@@ -79,7 +79,7 @@ export default async function DashboardPage() {
               invoices.slice(0, 5).map((invoice) => (
                 <div key={invoice.id} className="flex items-center justify-between px-6 py-4">
                   <div>
-                    <p className="text-sm text-white">{invoice.number}</p>
+                    <p className="text-sm text-text-primary">{invoice.number}</p>
                     <p className="mt-0.5 text-xs text-text-muted">
                       {invoice.amount.toLocaleString('fr-FR')} FCFA
                     </p>
@@ -92,9 +92,9 @@ export default async function DashboardPage() {
         </section>
 
         <section>
-          <h2 className="mb-4 font-display text-xl font-semibold text-white">Orbix AI</h2>
+          <h2 className="mb-4 font-display text-xl font-semibold text-text-primary">Orbix AI</h2>
           <Card className="flex flex-col items-start gap-3">
-            <div className="rounded-xl border border-orbix-500/20 bg-orbix-500/10 p-2.5 text-orbix-400">
+            <div className="rounded-xl border border-orbix-500/20 bg-orbix-500/10 p-2.5 text-orbix-600">
               <Sparkles className="h-5 w-5" />
             </div>
             <p className="text-sm text-text-secondary">

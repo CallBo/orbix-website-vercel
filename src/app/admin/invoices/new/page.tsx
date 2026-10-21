@@ -20,7 +20,7 @@ export default async function NewInvoicePage() {
 
   return (
     <div className="max-w-xl space-y-6">
-      <h1 className="font-display text-3xl font-bold text-white">Nouvelle facture</h1>
+      <h1 className="font-display text-3xl font-bold text-text-primary">Nouvelle facture</h1>
       {error ? (
         <Card className="border-warning/30 bg-warning/10 text-sm text-warning">
           orbix-api n&apos;est pas joignable — impossible de charger les données.

@@ -41,7 +41,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <div className="py-32 md:py-40">
       <Container className="max-w-2xl">
-        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-text-muted hover:text-white">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-text-muted hover:text-text-primary">
           <ArrowLeft className="h-4 w-4" /> Retour au blog
         </Link>
 
@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {formatDate(post.publishedAt ?? post.createdAt)}
         </p>
 
-        <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-white md:text-4xl">
+        <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
           {post.title}
         </h1>
 

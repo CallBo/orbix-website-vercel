@@ -4,6 +4,7 @@ import { Check } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Container } from '@/components/layout/Container'
 import { Button } from '@/components/ui/Button'
+import { Reveal } from '@/components/ui/Reveal'
 
 const plans = [
   {
@@ -41,17 +42,18 @@ export function PricingSection() {
   return (
     <section id="pricing" className="border-t border-surface-border py-24 md:py-32">
       <Container>
-        <div className="max-w-2xl">
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-white md:text-4xl">Tarifs</h2>
+        <Reveal className="max-w-2xl">
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-text-primary md:text-4xl">Tarifs</h2>
           <p className="mt-4 text-base leading-relaxed text-text-secondary">
             Un projet ponctuel ou un accompagnement continu — choisissez ce qui correspond à votre rythme.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {plans.map((plan) => (
-            <div
+          {plans.map((plan, i) => (
+            <Reveal
               key={plan.name}
+              delay={i * 0.08}
               className={cn(
                 'flex flex-col rounded-2xl border p-8',
                 plan.highlighted
@@ -59,18 +61,18 @@ export function PricingSection() {
                   : 'border-surface-border bg-surface-raised'
               )}
             >
-              <h3 className="font-display text-lg font-semibold text-white">{plan.name}</h3>
+              <h3 className="font-display text-lg font-semibold text-text-primary">{plan.name}</h3>
               <p className="mt-2 text-sm text-text-secondary">{plan.description}</p>
 
               <div className="mt-6">
-                <span className="font-display text-2xl font-bold text-white">{plan.price}</span>
+                <span className="font-display text-2xl font-bold text-text-primary">{plan.price}</span>
                 {plan.cadence && <span className="text-sm text-text-muted"> / {plan.cadence}</span>}
               </div>
 
               <ul className="mt-6 flex-1 space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2.5 text-sm text-text-secondary">
-                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-orbix-400" />
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-orbix-600" />
                     {feature}
                   </li>
                 ))}
@@ -84,7 +86,7 @@ export function PricingSection() {
               >
                 <Link href="/contact">{plan.cadence ? 'Démarrer' : 'Demander un devis'}</Link>
               </Button>
-            </div>
+            </Reveal>
           ))}
         </div>
       </Container>

@@ -90,7 +90,7 @@ export default function ServicesPage() {
   return (
     <div className="py-32 md:py-40">
       <Container className="max-w-2xl">
-        <h1 className="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">Nos services</h1>
+        <h1 className="font-display text-4xl font-bold tracking-tight text-text-primary md:text-5xl">Nos services</h1>
         <p className="mt-4 text-base leading-relaxed text-text-secondary">
           Six domaines d’intervention, une seule équipe qui les connecte — du premier
           brief à la maintenance en production.
@@ -121,10 +121,10 @@ export default function ServicesPage() {
             >
               <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-start">
                 <div>
-                  <div className="mb-4 inline-flex rounded-xl border border-orbix-500/20 bg-orbix-500/10 p-3 text-orbix-400">
+                  <div className="mb-4 inline-flex rounded-xl border border-orbix-500/20 bg-orbix-500/10 p-3 text-orbix-600">
                     <service.icon className="h-5 w-5" />
                   </div>
-                  <h2 className="font-display text-2xl font-semibold text-white">{service.title}</h2>
+                  <h2 className="font-display text-2xl font-semibold text-text-primary">{service.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">{service.summary}</p>
                   <Button variant="outline" size="sm" className="mt-6" asChild>
                     <Link href="/contact">

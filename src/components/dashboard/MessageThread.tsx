@@ -84,7 +84,7 @@ export function MessageThread({ projectId, currentUserName }: MessageThreadProps
               <div
                 className={cn(
                   'max-w-[75%] rounded-2xl px-4 py-2 text-sm',
-                  isMine ? 'bg-orbix-500 text-white' : 'bg-surface-overlay text-white'
+                  isMine ? 'bg-orbix-500 text-text-primary' : 'bg-surface-overlay text-text-primary'
                 )}
               >
                 {!isMine && <p className="mb-0.5 text-xs font-medium text-orbix-300">{message.sender?.name}</p>}
@@ -102,7 +102,7 @@ export function MessageThread({ projectId, currentUserName }: MessageThreadProps
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleSend())}
           placeholder="Écrire un message…"
-          className="flex-1 rounded-xl border border-surface-border bg-surface-base px-4 py-2 text-sm text-white placeholder:text-text-muted focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
+          className="flex-1 rounded-xl border border-surface-border bg-surface-base px-4 py-2 text-sm text-text-primary placeholder:text-text-muted focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
         />
         <Button size="icon" variant="primary" onClick={handleSend} loading={sending} disabled={!input.trim()}>
           <Send className="h-4 w-4" />

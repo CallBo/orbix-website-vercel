@@ -38,7 +38,7 @@ export default async function AdminBlogPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-3xl font-bold text-white">Blog</h1>
+          <h1 className="font-display text-3xl font-bold text-text-primary">Blog</h1>
           <p className="mt-1 text-text-secondary">
             {error
               ? "orbix-api n'est pas joignable pour l'instant (base de données pas encore en place)."
@@ -59,7 +59,7 @@ export default async function AdminBlogPage() {
         </Card>
       ) : posts.length === 0 ? (
         <Card className="text-sm text-text-secondary">
-          Aucun article pour l&apos;instant. <Link href="/admin/blog/new" className="text-orbix-400 hover:text-orbix-300">Créer le premier</Link>.
+          Aucun article pour l&apos;instant. <Link href="/admin/blog/new" className="text-orbix-600 hover:text-orbix-300">Créer le premier</Link>.
         </Card>
       ) : (
         <div className="space-y-3">
@@ -69,7 +69,7 @@ export default async function AdminBlogPage() {
                 <Badge variant={statusVariants[post.status]} size="sm">
                   {statusLabels[post.status]}
                 </Badge>
-                <h3 className="mt-2 font-display text-base font-semibold text-white">{post.title}</h3>
+                <h3 className="mt-2 font-display text-base font-semibold text-text-primary">{post.title}</h3>
                 <p className="mt-1 text-xs text-text-muted">
                   {post.publishedAt ? formatDate(post.publishedAt) : `Créé le ${formatDate(post.createdAt)}`}
                 </p>

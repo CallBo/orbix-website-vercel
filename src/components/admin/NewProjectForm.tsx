@@ -67,7 +67,7 @@ export function NewProjectForm({ clients }: { clients: ApiClient[] }) {
         <select
           {...register('clientId')}
           defaultValue=""
-          className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 text-sm text-white focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
+          className="w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-3 text-sm text-text-primary focus:border-orbix-500 focus:outline-none focus:ring-2 focus:ring-orbix-500/50"
         >
           <option value="" disabled className="bg-surface-raised">
             Sélectionner un client

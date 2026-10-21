@@ -7,7 +7,7 @@ const badgeVariants = cva('inline-flex items-center gap-1.5 rounded-full font-me
   variants: {
     variant: {
       default: 'bg-surface-muted text-text-secondary',
-      primary: 'bg-orbix-500/15 text-orbix-400 border border-orbix-500/20',
+      primary: 'bg-orbix-500/10 text-orbix-600 border border-orbix-500/20',
       success: 'bg-success/10 text-success border border-success/20',
       warning: 'bg-warning/10 text-warning border border-warning/20',
       error: 'bg-error/10 text-error border border-error/20',

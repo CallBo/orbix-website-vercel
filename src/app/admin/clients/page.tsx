@@ -21,7 +21,7 @@ export default async function AdminClientsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-3xl font-bold text-white">Clients</h1>
+        <h1 className="font-display text-3xl font-bold text-text-primary">Clients</h1>
       </div>
 
       {error ? (
@@ -46,7 +46,7 @@ export default async function AdminClientsPage() {
               {clients.map((client) => (
                 <tr key={client.id} className="hover:bg-surface-overlay">
                   <td className="px-6 py-4">
-                    <p className="font-medium text-white">{client.name}</p>
+                    <p className="font-medium text-text-primary">{client.name}</p>
                     <p className="text-xs text-text-muted">{client.email}</p>
                   </td>
                   <td className="px-6 py-4 text-text-secondary">{client.company ?? '—'}</td>

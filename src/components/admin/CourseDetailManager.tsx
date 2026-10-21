@@ -57,7 +57,7 @@ export function CourseDetailManager({ course }: { course: AcademyCourse }) {
             <Badge size="sm">{course.category}</Badge>
             <Badge size="sm">{course.level}</Badge>
           </div>
-          <h1 className="mt-2 font-display text-3xl font-bold text-white">{course.title}</h1>
+          <h1 className="mt-2 font-display text-3xl font-bold text-text-primary">{course.title}</h1>
           <p className="mt-2 max-w-2xl text-sm text-text-secondary">{course.description}</p>
         </div>
         <Button variant={course.published ? 'secondary' : 'gradient'} loading={togglingPublish} onClick={togglePublish}>
@@ -69,7 +69,7 @@ export function CourseDetailManager({ course }: { course: AcademyCourse }) {
 
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="font-display text-xl font-semibold text-white">Modules</h2>
+          <h2 className="font-display text-xl font-semibold text-text-primary">Modules</h2>
           <Button variant="secondary" size="sm" onClick={() => setAddingModule((v) => !v)}>
             <Plus className="h-4 w-4" /> Module
           </Button>
@@ -94,7 +94,7 @@ export function CourseDetailManager({ course }: { course: AcademyCourse }) {
         {course.modules.map((module) => (
           <Card key={module.id}>
             <div className="flex items-center justify-between">
-              <h3 className="font-display text-base font-semibold text-white">{module.title}</h3>
+              <h3 className="font-display text-base font-semibold text-text-primary">{module.title}</h3>
               <Button variant="ghost" size="sm" onClick={() => setAddingLessonTo(module.id === addingLessonTo ? null : module.id)}>
                 <Plus className="h-4 w-4" /> Leçon
               </Button>
@@ -106,14 +106,14 @@ export function CourseDetailManager({ course }: { course: AcademyCourse }) {
                 return (
                   <div key={lesson.id} className="rounded-xl border border-surface-border px-4 py-3">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm text-white">
-                        <Icon className="h-4 w-4 text-orbix-400" />
+                      <div className="flex items-center gap-2 text-sm text-text-primary">
+                        <Icon className="h-4 w-4 text-orbix-600" />
                         {lesson.title}
                       </div>
                       {lesson.type === 'VIDEO' && (
                         <button
                           onClick={() => setEditingVideoFor(editingVideoFor === lesson.id ? null : lesson.id)}
-                          className="text-text-muted hover:text-orbix-400"
+                          className="text-text-muted hover:text-orbix-600"
                           aria-label="Éditer l'URL vidéo"
                         >
                           <Pencil className="h-3.5 w-3.5" />
@@ -122,7 +122,7 @@ export function CourseDetailManager({ course }: { course: AcademyCourse }) {
                       {(lesson.type === 'TEXTE' || lesson.type === 'PROJET') && (
                         <button
                           onClick={() => setEditingContentFor(editingContentFor === lesson.id ? null : lesson.id)}
-                          className="text-text-muted hover:text-orbix-400"
+                          className="text-text-muted hover:text-orbix-600"
                           aria-label="Éditer le contenu"
                         >
                           <Pencil className="h-3.5 w-3.5" />
@@ -288,7 +288,7 @@ function NewLessonForm({
             onClick={() => setType(t)}
             className={cn(
               'rounded-full px-3 py-1 text-xs font-medium',
-              type === t ? 'bg-orbix-500 text-white' : 'bg-surface-overlay text-text-secondary'
+              type === t ? 'bg-orbix-500 text-text-primary' : 'bg-surface-overlay text-text-secondary'
             )}
           >
             {t}
@@ -372,7 +372,7 @@ function EditVideoUrlForm({
             type="file"
             accept="video/mp4,video/webm,video/quicktime"
             onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-            className="mt-1.5 block w-full text-sm text-text-secondary file:mr-3 file:rounded-lg file:border-0 file:bg-orbix-500 file:px-3 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-orbix-600"
+            className="mt-1.5 block w-full text-sm text-text-secondary file:mr-3 file:rounded-lg file:border-0 file:bg-orbix-500 file:px-3 file:py-2 file:text-sm file:font-medium file:text-text-primary hover:file:bg-orbix-600"
           />
         </div>
         <Button variant="gradient" size="md" onClick={submit} loading={uploading} disabled={!file}>
@@ -475,7 +475,7 @@ function IntroVideoSection({ courseId, currentUrl }: { courseId: string; current
     <Card>
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="font-display text-base font-semibold text-white">Vidéo d&apos;introduction du formateur</h3>
+          <h3 className="font-display text-base font-semibold text-text-primary">Vidéo d&apos;introduction du formateur</h3>
           <p className="mt-1 text-xs text-text-muted">
             {currentUrl
               ? 'Une vidéo est en ligne.'
@@ -495,7 +495,7 @@ function IntroVideoSection({ courseId, currentUrl }: { courseId: string; current
               type="file"
               accept="video/mp4,video/webm,video/quicktime"
               onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-              className="mt-1.5 block w-full text-sm text-text-secondary file:mr-3 file:rounded-lg file:border-0 file:bg-orbix-500 file:px-3 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-orbix-600"
+              className="mt-1.5 block w-full text-sm text-text-secondary file:mr-3 file:rounded-lg file:border-0 file:bg-orbix-500 file:px-3 file:py-2 file:text-sm file:font-medium file:text-text-primary hover:file:bg-orbix-600"
             />
           </div>
           <Button variant="gradient" size="md" onClick={submit} loading={uploading} disabled={!file}>

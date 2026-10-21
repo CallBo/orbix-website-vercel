@@ -40,7 +40,7 @@ export default async function AdminInvoicesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-3xl font-bold text-white">Factures</h1>
+          <h1 className="font-display text-3xl font-bold text-text-primary">Factures</h1>
           <p className="mt-1 text-text-secondary">
             Paiement en ligne (Stripe / Mobile Money) confirmé automatiquement par webhook.
           </p>
@@ -74,7 +74,7 @@ export default async function AdminInvoicesPage() {
             <tbody className="divide-y divide-surface-border">
               {invoices.map((invoice) => (
                 <tr key={invoice.id} className="hover:bg-surface-overlay">
-                  <td className="px-6 py-4 font-mono text-xs text-white">{invoice.number}</td>
+                  <td className="px-6 py-4 font-mono text-xs text-text-primary">{invoice.number}</td>
                   <td className="px-6 py-4 text-text-secondary">{invoice.client?.name ?? '—'}</td>
                   <td className="px-6 py-4 text-text-secondary">{invoice.amount.toLocaleString('fr-FR')} FCFA</td>
                   <td className="px-6 py-4 text-text-secondary">{formatDate(invoice.dueDate)}</td>
@@ -88,7 +88,7 @@ export default async function AdminInvoicesPage() {
                       href={`/api/invoices/${invoice.id}/pdf`}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-orbix-400 hover:text-orbix-300"
+                      className="inline-flex items-center gap-1 text-orbix-600 hover:text-orbix-300"
                     >
                       <Download className="h-3.5 w-3.5" />
                     </a>

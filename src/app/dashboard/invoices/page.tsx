@@ -37,7 +37,7 @@ export default async function InvoicesPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-3xl font-bold text-white">Mes factures</h1>
+      <h1 className="font-display text-3xl font-bold text-text-primary">Mes factures</h1>
 
       {error && (
         <Card className="border-warning/30 bg-warning/10 text-sm text-warning">
@@ -59,7 +59,7 @@ export default async function InvoicesPage() {
                   {statusLabels[invoice.status]}
                 </Badge>
               </div>
-              <p className="mt-1 font-display text-lg font-semibold text-white">
+              <p className="mt-1 font-display text-lg font-semibold text-text-primary">
                 {invoice.amount.toLocaleString('fr-FR')} FCFA
               </p>
               <p className="text-xs text-text-muted">Échéance : {formatDate(invoice.dueDate)}</p>
@@ -70,7 +70,7 @@ export default async function InvoicesPage() {
                 href={`/api/invoices/${invoice.id}/pdf`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-8 items-center gap-2 rounded-md border border-surface-border bg-transparent px-3 text-sm font-medium text-text-secondary transition-colors hover:border-orbix-500/50 hover:text-white"
+                className="inline-flex h-8 items-center gap-2 rounded-md border border-surface-border bg-transparent px-3 text-sm font-medium text-text-secondary transition-colors hover:border-orbix-500/50 hover:text-text-primary"
               >
                 <Download className="h-4 w-4" /> PDF
               </a>

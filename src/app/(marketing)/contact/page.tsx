@@ -14,7 +14,7 @@ export default function ContactPage() {
     <div className="py-32 md:py-40">
       <Container className="grid gap-16 lg:grid-cols-[1fr_1.2fr]">
         <div>
-          <h1 className="font-display text-4xl font-bold tracking-tight text-white md:text-5xl">
+          <h1 className="font-display text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
             Parlons de votre projet
           </h1>
           <p className="mt-4 max-w-md text-base leading-relaxed text-text-secondary">
@@ -24,25 +24,25 @@ export default function ContactPage() {
 
           <ul className="mt-10 space-y-6">
             <li className="flex items-start gap-3">
-              <Mail className="mt-0.5 h-5 w-5 text-orbix-400" />
+              <Mail className="mt-0.5 h-5 w-5 text-orbix-600" />
               <div>
-                <p className="text-sm font-medium text-white">Email</p>
-                <a href="mailto:hello@orbixlabs.tech" className="text-sm text-text-secondary hover:text-white">
+                <p className="text-sm font-medium text-text-primary">Email</p>
+                <a href="mailto:hello@orbixlabs.tech" className="text-sm text-text-secondary hover:text-text-primary">
                   hello@orbixlabs.tech
                 </a>
               </div>
             </li>
             <li className="flex items-start gap-3">
-              <MapPin className="mt-0.5 h-5 w-5 text-orbix-400" />
+              <MapPin className="mt-0.5 h-5 w-5 text-orbix-600" />
               <div>
-                <p className="text-sm font-medium text-white">Bureau</p>
+                <p className="text-sm font-medium text-text-primary">Bureau</p>
                 <p className="text-sm text-text-secondary">Cotonou, Bénin</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
-              <Clock className="mt-0.5 h-5 w-5 text-orbix-400" />
+              <Clock className="mt-0.5 h-5 w-5 text-orbix-600" />
               <div>
-                <p className="text-sm font-medium text-white">Délai de réponse</p>
+                <p className="text-sm font-medium text-text-primary">Délai de réponse</p>
                 <p className="text-sm text-text-secondary">Sous 24h ouvrées</p>
               </div>
             </li>

@@ -23,7 +23,7 @@ export default async function MessagesPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-3xl font-bold text-white">Messages</h1>
+      <h1 className="font-display text-3xl font-bold text-text-primary">Messages</h1>
 
       {error ? (
         <Card className="border-warning/30 bg-warning/10 text-sm text-warning">

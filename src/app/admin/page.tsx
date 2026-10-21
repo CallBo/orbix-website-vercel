@@ -69,7 +69,7 @@ export default async function AdminOverviewPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-display text-3xl font-bold text-white">Vue d&apos;ensemble</h1>
+        <h1 className="font-display text-3xl font-bold text-text-primary">Vue d&apos;ensemble</h1>
         <p className="mt-1 text-text-secondary">L&apos;activité de l&apos;agence en un coup d&apos;œil.</p>
       </div>
 
@@ -88,12 +88,12 @@ export default async function AdminOverviewPage() {
 
       <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr]">
         <Card>
-          <h2 className="mb-6 font-display text-lg font-semibold text-white">Revenus par mois</h2>
+          <h2 className="mb-6 font-display text-lg font-semibold text-text-primary">Revenus par mois</h2>
           <RevenueBarChart data={monthlyRevenue} />
         </Card>
 
         <Card className="p-0">
-          <h2 className="px-6 pt-6 font-display text-lg font-semibold text-white">Projets récents</h2>
+          <h2 className="px-6 pt-6 font-display text-lg font-semibold text-text-primary">Projets récents</h2>
           <div className="mt-4 divide-y divide-surface-border">
             {projects.length === 0 ? (
               <p className="px-6 pb-6 text-sm text-text-muted">Aucun projet pour l&apos;instant.</p>
@@ -104,7 +104,7 @@ export default async function AdminOverviewPage() {
                   href="/admin/projects"
                   className="flex items-center justify-between px-6 py-3 text-sm hover:bg-surface-overlay"
                 >
-                  <span className="truncate text-white">{project.title}</span>
+                  <span className="truncate text-text-primary">{project.title}</span>
                   <Badge size="sm">{project.progress}%</Badge>
                 </Link>
               ))

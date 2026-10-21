@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'La plateforme technologique pensée pour les entreprises africaines.',
     start_url: '/dashboard',
     display: 'standalone',
-    background_color: '#0a0a0f',
-    theme_color: '#7b30ff',
+    background_color: '#ffffff',
+    theme_color: '#2f6fed',
     orientation: 'portrait',
     icons: [
       { src: '/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },

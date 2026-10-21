@@ -1,18 +1,24 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Toaster } from 'sonner'
 
 import './globals.css'
 import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration'
 
-const spaceGrotesk = Space_Grotesk({
+// Une seule famille, Inter, pour les titres et le corps de texte — c'est
+// l'alternative libre la plus proche de la typographie neutre et
+// géométrique utilisée par apple.com (SF Pro n'est pas librement
+// redistribuable hors plateformes Apple). Les gros titres compensent par
+// un poids élevé et un tracking négatif (voir .font-display / h1-h4 dans
+// globals.css et tailwind.config.ts).
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['500', '600', '700'],
+  weight: ['500', '600', '700', '800'],
 })
 
-const inter = Inter({
+const interBody = Inter({
   subsets: ['latin'],
   variable: '--font-body',
   weight: ['400', '500', '600'],
@@ -53,16 +59,16 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0a0a0f',
+  themeColor: '#ffffff',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
-      <html lang="fr" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+      <html lang="fr" className={`${inter.variable} ${interBody.variable} ${jetbrainsMono.variable}`}>
         <body className="font-body">
           {children}
-          <Toaster theme="dark" position="top-center" />
+          <Toaster theme="light" position="top-center" />
           <ServiceWorkerRegistration />
         </body>
       </html>

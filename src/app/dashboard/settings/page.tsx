@@ -6,17 +6,17 @@ export const metadata: Metadata = { title: 'Paramètres' }
 export default function SettingsPage() {
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-3xl font-bold text-white">Paramètres</h1>
+      <h1 className="font-display text-3xl font-bold text-text-primary">Paramètres</h1>
       <div className="flex justify-center">
         <UserProfile
           appearance={{
             variables: {
-              colorPrimary: '#7b30ff',
-              colorBackground: '#0d0d14',
-              colorText: '#ffffff',
-              colorTextSecondary: '#a0a0b8',
-              colorInputBackground: '#12121c',
-              colorInputText: '#ffffff',
+              colorPrimary: '#2f6fed',
+              colorBackground: '#fbfbfd',
+              colorText: '#1d1d1f',
+              colorTextSecondary: '#6e6e73',
+              colorInputBackground: '#ffffff',
+              colorInputText: '#1d1d1f',
             },
             elements: {
               rootBox: 'w-full',

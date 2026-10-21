@@ -21,7 +21,7 @@ export default async function ProjectsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-3xl font-bold text-white">Mes projets</h1>
+        <h1 className="font-display text-3xl font-bold text-text-primary">Mes projets</h1>
       </div>
 
       {error ? (

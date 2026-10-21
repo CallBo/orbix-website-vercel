@@ -24,31 +24,31 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 z-50 w-full transition-all duration-300',
-        scrolled ? 'border-b border-surface-border bg-surface-base/90 backdrop-blur-lg' : 'bg-transparent'
+        'fixed top-0 z-50 w-full transition-all duration-300 ease-apple',
+        scrolled ? 'glass shadow-nav' : 'bg-transparent'
       )}
     >
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5">
-          <OrbixLogo className="h-8 w-auto" />
-          <span className="font-display text-lg font-bold text-white">
-            Orbix <span className="text-orbix-400">Labs</span>
+      <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-2">
+          <OrbixLogo className="h-7 w-auto" />
+          <span className="font-display text-base font-semibold tracking-tight text-text-primary">
+            Orbix <span className="text-orbix-600">Labs</span>
           </span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {NAV_LINKS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-text-secondary transition-colors hover:text-white"
+              className="text-[13px] font-medium text-text-secondary transition-colors hover:text-text-primary"
             >
               {item.label}
             </Link>
           ))}
           <a
             href={ACADEMY_URL}
-            className="text-sm font-medium text-text-secondary transition-colors hover:text-white"
+            className="text-[13px] font-medium text-text-secondary transition-colors hover:text-text-primary"
           >
             Academy
           </a>
@@ -73,7 +73,7 @@ export function Navbar() {
 
         <button
           onClick={() => setMobileOpen((v) => !v)}
-          className="text-text-secondary hover:text-white md:hidden"
+          className="text-text-secondary hover:text-text-primary md:hidden"
           aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
         >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -88,14 +88,14 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary hover:bg-surface-overlay hover:text-white"
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary hover:bg-surface-overlay hover:text-text-primary"
               >
                 {item.label}
               </Link>
             ))}
             <a
               href={ACADEMY_URL}
-              className="rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary hover:bg-surface-overlay hover:text-white"
+              className="rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary hover:bg-surface-overlay hover:text-text-primary"
             >
               Academy
             </a>

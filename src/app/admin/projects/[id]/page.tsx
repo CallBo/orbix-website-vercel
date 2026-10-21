@@ -31,7 +31,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           <Badge size="sm">{project.status}</Badge>
           <Badge size="sm">{project.progress}%</Badge>
         </div>
-        <h1 className="mt-2 font-display text-3xl font-bold text-white">{project.title}</h1>
+        <h1 className="mt-2 font-display text-3xl font-bold text-text-primary">{project.title}</h1>
         {project.client && <p className="mt-1 text-sm text-text-secondary">{project.client.name}</p>}
       </div>
       <EditProjectForm project={project} />
