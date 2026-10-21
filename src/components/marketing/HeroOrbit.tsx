@@ -21,8 +21,8 @@ export function HeroOrbit() {
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
       {/* Halo central diffus */}
       <div
-        className="absolute left-1/2 top-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 blur-3xl"
-        style={{ background: 'radial-gradient(circle, rgba(47,111,237,0.5) 0%, rgba(47,111,237,0) 70%)' }}
+        className="absolute left-1/2 top-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 blur-3xl"
+        style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 70%)' }}
       />
 
       {/* Étoiles */}
@@ -48,12 +48,12 @@ export function HeroOrbit() {
       >
         <defs>
           <linearGradient id="hero-ring-a" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#5790ff" />
-            <stop offset="100%" stopColor="#1f56d1" />
+            <stop offset="0%" stopColor="#ffffff" />
+            <stop offset="100%" stopColor="#8c8f96" />
           </linearGradient>
           <linearGradient id="hero-ring-b" x1="1" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#8ab1ff" />
-            <stop offset="100%" stopColor="#2f6fed" />
+            <stop offset="0%" stopColor="#d4d5d9" />
+            <stop offset="100%" stopColor="#f7f7f8" />
           </linearGradient>
         </defs>
 

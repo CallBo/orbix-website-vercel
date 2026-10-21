@@ -11,7 +11,7 @@ export default function SettingsPage() {
         <UserProfile
           appearance={{
             variables: {
-              colorPrimary: '#2f6fed',
+              colorPrimary: '#1d1d1f',
               colorBackground: '#fbfbfd',
               colorText: '#1d1d1f',
               colorTextSecondary: '#6e6e73',

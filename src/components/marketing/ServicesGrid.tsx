@@ -82,7 +82,7 @@ function ServiceTile({ service, delay }: { service: (typeof services)[number]; d
         <div
           className="absolute inset-0 opacity-70 transition-opacity duration-500 group-hover:opacity-100"
           style={{
-            background: `radial-gradient(circle at ${service.glow}, rgba(47,111,237,0.5) 0%, rgba(47,111,237,0) 55%)`,
+            background: `radial-gradient(circle at ${service.glow}, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 55%)`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />

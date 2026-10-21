@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
@@ -6,16 +7,29 @@ import { Button } from '@/components/ui/Button'
 import { OrbixLogo } from '@/components/layout/OrbixLogo'
 import { HeroOrbit } from './HeroOrbit'
 
-// Hero en bande sombre façon keynote : grand titre centré, logo en filigrane
-// lumineux, fond animé (anneaux orbitaux + étoiles, voir HeroOrbit) plutôt
-// qu'une vidéo — net à toute résolution et cohérent avec l'identité de
-// marque. Contraste volontaire avec le reste du site, désormais clair :
-// c'est le seul "moment fort" sombre de la page d'accueil, comme Apple le
-// fait sur ses pages de lancement.
+// Hero en bande sombre façon keynote : grand titre centré, logo en
+// filigrane, photo en fond (clavier rétroéclairé, noir brillant/argent)
+// assombrie par un dégradé, avec les anneaux orbitaux en surimpression
+// discrète pour la touche de mouvement et de marque. Contraste volontaire
+// avec le reste du site, désormais clair : c'est le seul "moment fort"
+// sombre de la page d'accueil, comme Apple le fait sur ses pages de
+// lancement — entièrement monochrome, aucune couleur de marque saturée.
 export function Hero() {
   return (
     <section className="ink-section relative isolate flex min-h-[92vh] items-center overflow-hidden pt-14">
-      <HeroOrbit />
+      <div className="duotone-ink absolute inset-0 -z-20">
+        <Image
+          src="/hero-keyboard.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[70%_40%] opacity-80"
+        />
+      </div>
+      <div className="-z-10">
+        <HeroOrbit />
+      </div>
 
       <Container className="relative flex flex-col items-center py-24 text-center md:py-32">
         <OrbixLogo variant="mono" className="mb-8 h-16 w-16 animate-fade-in md:h-20 md:w-20" />
@@ -38,7 +52,7 @@ export function Hero() {
         >
           <Button variant="primary" size="xl" asChild>
             <Link href="/auth/register">
-              Get Started <ArrowRight className="h-4 w-4" />
+              Commencer <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>
           <Button

@@ -1,12 +1,13 @@
 // Marque Orbix Labs : anneau orbital + satellite, dessinée en SVG inline
 // (plutôt qu'un PNG exporté) pour rester parfaitement nette à toute taille
-// et sur tous les écrans, et pour pouvoir changer de teinte selon le fond
-// (bleu Orbix sur fond clair, argenté sur les bandes sombres type keynote).
+// et sur tous les écrans, et pour pouvoir changer de teinte selon le fond.
+// Entièrement monochrome : pas de bleu — un dégradé anthracite/acier sur
+// fond clair, un dégradé blanc/argent sur les bandes sombres.
 //
 // `variant="mono"` donne la version claire (blanc/argenté), à utiliser sur
 // les sections sombres (Hero, bandeau CTA final, footer si jamais il
-// repasse en sombre). Par défaut, la version bleu Orbix pour le reste du
-// site, désormais clair.
+// repasse en sombre). Par défaut, la version anthracite/acier pour le
+// reste du site, désormais clair.
 export function OrbixLogo({
   className,
   variant = 'default',
@@ -14,8 +15,8 @@ export function OrbixLogo({
   className?: string
   variant?: 'default' | 'mono'
 }) {
-  const ringId = variant === 'mono' ? 'orbix-ring-mono' : 'orbix-ring-blue'
-  const sphereId = variant === 'mono' ? 'orbix-sphere-mono' : 'orbix-sphere-blue'
+  const ringId = variant === 'mono' ? 'orbix-ring-mono' : 'orbix-ring-ink'
+  const sphereId = variant === 'mono' ? 'orbix-sphere-mono' : 'orbix-sphere-ink'
 
   return (
     <svg viewBox="0 0 48 48" className={className} role="img" aria-label="Orbix Labs">
@@ -28,8 +29,8 @@ export function OrbixLogo({
             </>
           ) : (
             <>
-              <stop offset="0%" stopColor="#5790ff" />
-              <stop offset="100%" stopColor="#1f56d1" />
+              <stop offset="0%" stopColor="#4f5257" />
+              <stop offset="100%" stopColor="#0b0b0c" />
             </>
           )}
         </linearGradient>
@@ -41,8 +42,8 @@ export function OrbixLogo({
             </>
           ) : (
             <>
-              <stop offset="0%" stopColor="#bcd6ff" />
-              <stop offset="100%" stopColor="#2f6fed" />
+              <stop offset="0%" stopColor="#9a9da3" />
+              <stop offset="100%" stopColor="#1d1d1f" />
             </>
           )}
         </radialGradient>

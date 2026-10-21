@@ -7,22 +7,23 @@ const config: Config = {
   theme: {
     extend: {
       // ─── COULEURS ─────────────────────────────────────────
-      // Palette claire et minimaliste (identité "Engineering Tomorrow" :
-      // anneau orbital bleu + sphère argentée). Le bleu Orbix remplace le
-      // violet d'origine comme unique couleur de marque ; le reste du site
-      // est en niveaux de gris quasi neutres, dans l'esprit apple.com.
+      // Palette entièrement monochrome : noir profond, blanc, et une rampe
+      // argent/acier métallisé comme seul accent — plus aucune trace de
+      // bleu ni de violet. `orbix` reste le nom du token (déjà utilisé
+      // partout dans le code) mais porte maintenant cette rampe grise
+      // métallisée plutôt qu'une couleur de marque saturée.
       colors: {
         orbix: {
-          50: '#eef4ff',
-          100: '#dbe7ff',
-          200: '#b8d0ff',
-          300: '#8ab1ff',
-          400: '#5790ff',
-          500: '#2f6fed',
-          600: '#1f56d1',
-          700: '#1942a8',
-          800: '#173686',
-          900: '#152f6b',
+          50: '#f7f7f8',
+          100: '#ececef',
+          200: '#d4d5d9',
+          300: '#b3b5bb',
+          400: '#8c8f96',
+          500: '#6b6e74',
+          600: '#4f5257',
+          700: '#38393d',
+          800: '#242427',
+          900: '#141415',
         },
         ink: {
           900: '#000000',
@@ -46,7 +47,7 @@ const config: Config = {
         success: '#10b981',
         warning: '#f59e0b',
         error: '#ef4444',
-        info: '#2f6fed',
+        info: '#4f5257',
       },
 
       // ─── TYPOGRAPHIE ──────────────────────────────────────
@@ -96,7 +97,7 @@ const config: Config = {
       // Ombres douces et peu contrastées (esprit apple.com : la profondeur
       // vient du flou, pas de la couleur).
       boxShadow: {
-        'glow-orbix': '0 0 24px rgba(47, 111, 237, 0.25)',
+        'glow-orbix': '0 0 24px rgba(255, 255, 255, 0.2)',
         subtle: '0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.03)',
         card: '0 2px 10px rgba(0, 0, 0, 0.06)',
         'card-hover': '0 20px 48px rgba(0, 0, 0, 0.12)',
@@ -123,8 +124,8 @@ const config: Config = {
           '100%': { transform: 'translateX(0)' },
         },
         'pulse-glow': {
-          '0%, 100%': { boxShadow: '0 0 10px rgba(47, 111, 237, 0.25)' },
-          '50%': { boxShadow: '0 0 26px rgba(47, 111, 237, 0.5)' },
+          '0%, 100%': { boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)' },
+          '50%': { boxShadow: '0 0 26px rgba(255, 255, 255, 0.6)' },
         },
         orbit: {
           '0%': { transform: 'rotate(0deg)' },
