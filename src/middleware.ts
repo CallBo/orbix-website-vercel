@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-// Routes publiques : marketing, auth, mentions légales, API contact.
+// Routes publiques : marketing, auth, mentions légales, API contact et
+// liste d'attente de l'app Orbix.
 // Tout le reste (dashboard, admin) exige une session Clerk.
 const isPublicRoute = createRouteMatcher([
   '/',
@@ -15,6 +16,7 @@ const isPublicRoute = createRouteMatcher([
   '/auth/register(.*)',
   '/auth/forgot(.*)',
   '/api/contact',
+  '/api/waitlist',
 ])
 
 const isAdminRoute = createRouteMatcher(['/admin(.*)'])

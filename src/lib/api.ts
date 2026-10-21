@@ -50,6 +50,27 @@ export const contactApi = {
     }),
 }
 
+// ── DEMANDES (devis + liste d'attente app Orbix) — staff uniquement ─────
+// Les inscriptions à la liste d'attente sont stockées dans la même table
+// que les devis, repérées par WAITLIST_SERVICE_PREFIX dans `service`
+// (même constante côté orbix-api, leads.schema.ts). Pour une inscription,
+// `email` contient l'e-mail OU le numéro WhatsApp.
+export const WAITLIST_SERVICE_PREFIX = "Liste d'attente app Orbix"
+
+export interface Lead {
+  id: string
+  name: string
+  email: string
+  company: string | null
+  service: string
+  message: string
+  createdAt: string
+}
+
+export const leadsApi = {
+  list: () => apiCall<{ success: boolean; data: Lead[] }>('/v1/leads'),
+}
+
 // ── BLOG ─────────────────────────────────────────────────────
 // Miroir des routes /v1/blog côté orbix-api. Tant que la base Azure
 // n'existe pas, ces appels échoueront — les pages appelantes doivent gérer

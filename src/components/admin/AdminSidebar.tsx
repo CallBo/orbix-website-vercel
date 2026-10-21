@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { UserButton } from '@clerk/nextjs'
-import { LayoutDashboard, Users, FolderKanban, Receipt, Newspaper, GraduationCap } from 'lucide-react'
+import { LayoutDashboard, Users, FolderKanban, Receipt, Newspaper, GraduationCap, Inbox } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { OrbixLogo, OrbixWordmark } from '@/components/layout/OrbixLogo'
@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/Badge'
 
 const links = [
   { href: '/admin', label: "Vue d'ensemble", icon: LayoutDashboard },
+  { href: '/admin/leads', label: 'Demandes', icon: Inbox },
   { href: '/admin/clients', label: 'Clients', icon: Users },
   { href: '/admin/projects', label: 'Projets', icon: FolderKanban },
   { href: '/admin/invoices', label: 'Factures', icon: Receipt },
