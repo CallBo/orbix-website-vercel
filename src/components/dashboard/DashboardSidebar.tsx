@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
-import { OrbixLogo } from '@/components/layout/OrbixLogo'
+import { OrbixLogo, OrbixWordmark } from '@/components/layout/OrbixLogo'
 import { NotificationsBell } from './NotificationsBell'
 
 const links = [
@@ -33,10 +33,8 @@ export function DashboardSidebar() {
   return (
     <aside className="hidden w-64 flex-shrink-0 flex-col border-r border-surface-border bg-surface-raised/40 md:flex">
       <Link href="/" className="flex items-center gap-2.5 px-6 py-6">
-        <OrbixLogo className="h-7 w-auto" />
-        <span className="font-display text-base font-bold text-text-primary">
-          Orbix <span className="text-orbix-600">Labs</span>
-        </span>
+        <OrbixLogo className="h-7" />
+        <OrbixWordmark className="h-[18px]" />
       </Link>
 
       <nav className="flex-1 space-y-1 px-3">

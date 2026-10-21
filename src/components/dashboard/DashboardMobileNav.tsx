@@ -7,7 +7,7 @@ import { UserButton } from '@clerk/nextjs'
 import { Menu, X, LayoutDashboard, FolderKanban, Receipt, MessageSquare, Sparkles, FileStack, Settings } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
-import { OrbixLogo } from '@/components/layout/OrbixLogo'
+import { OrbixLogo, OrbixWordmark } from '@/components/layout/OrbixLogo'
 import { NotificationsBell } from './NotificationsBell'
 
 const links = [
@@ -28,7 +28,8 @@ export function DashboardMobileNav() {
     <div className="border-b border-surface-border bg-surface-base md:hidden">
       <div className="flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <OrbixLogo className="h-7 w-auto" />
+          <OrbixLogo className="h-7" />
+          <OrbixWordmark className="h-[16px]" />
         </Link>
         <div className="flex items-center gap-3">
           <NotificationsBell />

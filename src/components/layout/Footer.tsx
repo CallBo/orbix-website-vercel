@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Github, Linkedin, Twitter, Instagram } from 'lucide-react'
 
 import { Container } from './Container'
-import { OrbixLogo } from './OrbixLogo'
+import { OrbixLogo, OrbixWordmark } from './OrbixLogo'
 
 const footerLinks = [
   { label: 'Services', href: '/services' },
@@ -27,10 +27,8 @@ export function Footer() {
         <div className="flex flex-col gap-12 md:flex-row md:justify-between">
           <div className="max-w-xs">
             <Link href="/" className="flex items-center gap-2.5">
-              <OrbixLogo className="h-7 w-auto" />
-              <span className="font-display text-base font-semibold tracking-tight text-text-primary">
-                Orbix <span className="text-orbix-600">Labs</span>
-              </span>
+              <OrbixLogo className="h-7" />
+              <OrbixWordmark className="h-[22px]" />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-text-muted">
               Nous concevons, développons et hébergeons les outils numériques dont les

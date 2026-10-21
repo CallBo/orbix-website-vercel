@@ -1,70 +1,67 @@
-// Marque Orbix Labs : anneau orbital + satellite, dessinée en SVG inline
-// (plutôt qu'un PNG exporté) pour rester parfaitement nette à toute taille
-// et sur tous les écrans, et pour pouvoir changer de teinte selon le fond.
-// Entièrement monochrome : pas de bleu — un dégradé anthracite/acier sur
-// fond clair, un dégradé blanc/argent sur les bandes sombres.
+import Image from 'next/image'
+
+import { cn } from '@/lib/utils'
+
+// Logo officiel Orbix Labs — ce sont les fichiers de marque fournis
+// (zip "Orbix_Labs_Logos_Individuels"), simplement détourés sur fond
+// transparent, PAS un logo redessiné :
+// - logo-symbol-silver.png / logo-wordmark-light.png : depuis
+//   02_symbole_seul_fond_sombre.png et 03_wordmark_ORBIX_LABS.png, en
+//   version argentée (palette noir / blanc / argent du site). À utiliser
+//   sur fond sombre (nav, Hero, bandes noires).
+// - logo-symbol-ink.png / logo-wordmark-ink.png : depuis
+//   04_logo_version_claire.png, en version encre. À utiliser sur fond
+//   clair (footer, espaces client et admin).
 //
-// `variant="mono"` donne la version claire (blanc/argenté), à utiliser sur
-// les sections sombres (Hero, bandeau CTA final, footer si jamais il
-// repasse en sombre). Par défaut, la version anthracite/acier pour le
-// reste du site, désormais clair.
-export function OrbixLogo({
-  className,
-  variant = 'default',
-}: {
-  className?: string
-  variant?: 'default' | 'mono'
-}) {
-  const ringId = variant === 'mono' ? 'orbix-ring-mono' : 'orbix-ring-ink'
-  const sphereId = variant === 'mono' ? 'orbix-sphere-mono' : 'orbix-sphere-ink'
+// `variant="mono"` = version argentée pour fond sombre ;
+// `variant="default"` = version encre pour fond clair.
 
+type Variant = 'default' | 'mono'
+
+const SYMBOL = {
+  mono: { src: '/logo-symbol-silver.png', width: 591, height: 434 },
+  default: { src: '/logo-symbol-ink.png', width: 175, height: 132 },
+} as const
+
+const WORDMARK = {
+  mono: { src: '/logo-wordmark-light.png', width: 774, height: 175 },
+  default: { src: '/logo-wordmark-ink.png', width: 242, height: 65 },
+} as const
+
+export function OrbixLogo({ className, variant = 'default' }: { className?: string; variant?: Variant }) {
+  const s = SYMBOL[variant]
   return (
-    <svg viewBox="0 0 48 48" className={className} role="img" aria-label="Orbix Labs">
-      <defs>
-        <linearGradient id={ringId} x1="6" y1="10" x2="40" y2="38" gradientUnits="userSpaceOnUse">
-          {variant === 'mono' ? (
-            <>
-              <stop offset="0%" stopColor="#f5f5f7" />
-              <stop offset="100%" stopColor="#8e8e93" />
-            </>
-          ) : (
-            <>
-              <stop offset="0%" stopColor="#4f5257" />
-              <stop offset="100%" stopColor="#0b0b0c" />
-            </>
-          )}
-        </linearGradient>
-        <radialGradient id={sphereId} cx="35%" cy="30%" r="75%">
-          {variant === 'mono' ? (
-            <>
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="100%" stopColor="#c7c7cc" />
-            </>
-          ) : (
-            <>
-              <stop offset="0%" stopColor="#9a9da3" />
-              <stop offset="100%" stopColor="#1d1d1f" />
-            </>
-          )}
-        </radialGradient>
-      </defs>
+    <Image
+      src={s.src}
+      alt="Orbix Labs"
+      width={s.width}
+      height={s.height}
+      priority
+      className={cn('w-auto object-contain', className)}
+    />
+  )
+}
 
-      {/* Anneau orbital */}
-      <circle cx="21" cy="25" r="13.5" fill="none" stroke={`url(#${ringId})`} strokeWidth="4" />
+export function OrbixWordmark({ className, variant = 'default' }: { className?: string; variant?: Variant }) {
+  const w = WORDMARK[variant]
+  return (
+    <Image
+      src={w.src}
+      alt="Orbix Labs"
+      width={w.width}
+      height={w.height}
+      priority
+      className={cn('w-auto object-contain', className)}
+    />
+  )
+}
 
-      {/* Trajectoire du satellite, passant devant l'anneau */}
-      <line
-        x1="7"
-        y1="33"
-        x2="38"
-        y2="12"
-        stroke={`url(#${ringId})`}
-        strokeWidth="3.2"
-        strokeLinecap="round"
-      />
-
-      {/* Satellite */}
-      <circle cx="38.5" cy="11.5" r="5.5" fill={`url(#${sphereId})`} />
-    </svg>
+// Symbole + wordmark côte à côte, pour les en-têtes (nav, footer, sidebars).
+export function OrbixLockup({ className, variant = 'default' }: { className?: string; variant?: Variant }) {
+  return (
+    <span className={cn('flex items-center gap-2.5', className)}>
+      <OrbixLogo variant={variant} className="h-6" />
+      <OrbixWordmark variant={variant} className="h-[18px]" />
+    </span>
   )
 }

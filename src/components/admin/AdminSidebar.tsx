@@ -6,7 +6,7 @@ import { UserButton } from '@clerk/nextjs'
 import { LayoutDashboard, Users, FolderKanban, Receipt, Newspaper, GraduationCap } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
-import { OrbixLogo } from '@/components/layout/OrbixLogo'
+import { OrbixLogo, OrbixWordmark } from '@/components/layout/OrbixLogo'
 import { Badge } from '@/components/ui/Badge'
 
 const links = [
@@ -24,11 +24,9 @@ export function AdminSidebar() {
   return (
     <aside className="hidden w-64 flex-shrink-0 flex-col border-r border-surface-border bg-surface-raised/40 md:flex">
       <Link href="/" className="flex items-center gap-2.5 px-6 py-6">
-        <OrbixLogo className="h-7 w-auto" />
+        <OrbixLogo className="h-7" />
         <div>
-          <span className="block font-display text-base font-bold text-text-primary">
-            Orbix <span className="text-orbix-600">Labs</span>
-          </span>
+          <OrbixWordmark className="h-[18px]" />
           <Badge variant="primary" size="sm" className="mt-1">
             Admin
           </Badge>

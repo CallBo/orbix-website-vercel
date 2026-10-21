@@ -6,7 +6,7 @@ import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { Menu, X } from 'lucide-react'
 
 import { NAV_LINKS, ACADEMY_URL } from '@/lib/constants'
-import { OrbixLogo } from './OrbixLogo'
+import { OrbixLogo, OrbixWordmark } from './OrbixLogo'
 
 // Barre de navigation façon apple.com : fine, sombre et translucide en
 // permanence (verre dépoli noir), texte gris clair. Lisible aussi bien
@@ -21,8 +21,8 @@ export function Navbar() {
     <header className="glass-dark fixed top-0 z-50 w-full !border-x-0 !border-t-0 border-b border-white/[0.06]">
       <nav className="mx-auto flex h-12 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2" aria-label="Orbix Labs — accueil">
-          <OrbixLogo variant="mono" className="h-5 w-5" />
-          <span className="font-display text-[14px] font-semibold tracking-tight text-white">Orbix Labs</span>
+          <OrbixLogo variant="mono" className="h-[30px]" />
+          <OrbixWordmark variant="mono" className="h-[24px]" />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">

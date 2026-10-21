@@ -32,7 +32,7 @@ export function Hero() {
       </div>
 
       <Container className="relative flex flex-col items-center py-24 text-center md:py-32">
-        <OrbixLogo variant="mono" className="mb-8 h-16 w-16 animate-fade-in md:h-20 md:w-20" />
+        <OrbixLogo variant="mono" className="mb-8 h-20 animate-fade-in md:h-28" />
 
         <h1 className="animate-fade-in-up font-display text-5xl font-bold leading-[0.95] tracking-tightest text-text-inverse md:text-7xl lg:text-8xl">
           Engineering
