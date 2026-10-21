@@ -249,34 +249,99 @@ avancement (curseur 0-100%), description. Les cartes projet côté
 `/admin/projects` pointent maintenant vers cette page de détail au lieu
 de renvoyer vers la liste elle-même.
 
-## Logo en rendu métallique/argenté
+## Logo en rendu métallique/argenté (historique, remplacé ci-dessous)
 
-Décision : le logo passe en argenté/gris métallique (voulu "ultra
-épuré"), le reste du site (violet, fonds sombres, boutons) ne change pas
-— option choisie après comparaison avec une planche de marque bleu/violet
-envoyée en référence, écartée pour ne pas déstabiliser un système déjà
-cohérent et vérifié sur 40+ pages.
+Décision d'origine : le logo passait en argenté/gris métallique, le reste
+du site (violet, fonds sombres) ne changeait pas. **Cette étape est
+dépassée par le rebrand complet décrit juste en dessous** — gardée ici
+pour l'historique.
 
-Technique : les fichiers logo/icônes existants n'étaient pas de simples
-SVG plats mais des images déjà rendues avec ombres et reflets 3D — plutôt
-que de redessiner la forme (risque de ne pas matcher l'original), la
-teinte violette a été remappée vers une rampe argent/acier
-(anthracite → gris acier → blanc froid) en conservant la luminosité
-d'origine, donc tout le relief déjà présent. Fichiers concernés :
-`logo-mark.png`, `logo-mark-light.png`, `icon.png`, `apple-icon.png`,
-`icon-192.png`, `icon-512.png`, `icon-maskable-512.png`.
+## Rebrand complet — thème clair façon Apple + nouvelle identité (branche `redesign/apple-style-vercel`)
 
-**Non touché, à faire si voulu plus tard** : `og-image.jpg` (aperçu de
-partage réseaux sociaux) a le logo composé directement dans un fond
-dégradé violet — recolorer juste le logo dedans demande de refaire la
-composition, pas un simple filtre. N'affecte que les aperçus sur
-réseaux sociaux, pas le site lui-même.
+Demande : remplacer entièrement le design (logo, couleurs, animations)
+par une esthétique proche d'apple.com, en vue d'une migration de
+l'hébergement vers Vercel.
 
-## Structure
+**Identité** : nouveau logo (anneau orbital + satellite bleu/argenté,
+signature "Engineering Tomorrow.") fourni par le fondateur, intégré en
+SVG inline (`src/components/layout/OrbixLogo.tsx`) plutôt qu'en PNG —
+net à toute taille, variante `mono` pour les sections sombres. Favicon,
+icônes PWA (192/512/maskable/apple-touch) et `og-image.jpg` régénérés à
+partir des visuels fournis.
 
-## Structure
+**Thème** : le site bascule du thème sombre violet d'origine à un thème
+clair et minimaliste — fond blanc/gris très clair (`#ffffff` →
+`#f5f5f7`), texte quasi noir (`#1d1d1f`), le bleu Orbix (`#2f6fed`)
+comme seule couleur de marque. Deux bandes sombres façon keynote
+(Hero et CTA finale de la page d'accueil) encadrent le contenu clair,
+dans l'esprit des pages de lancement produit d'Apple.
 
-## Structure
+Ce changement a pu se faire en un seul passage sur **tout** le site
+(pages marketing + dashboards client/admin) parce que le code utilisait
+déjà des tokens Tailwind sémantiques (`text-text-primary`,
+`bg-surface-raised`, etc.) plutôt que des couleurs en dur — changer la
+palette dans `tailwind.config.ts` + `globals.css` a suffi à retheme
+l'ensemble. Seules les quelques couleurs écrites en dur (configuration
+Clerk `UserProfile`, `manifest.ts`) ont dû être corrigées à la main.
+
+**Typographie** : une seule famille (Inter) pour les titres et le corps,
+avec un tracking négatif sur les gros titres — alternative libre la plus
+proche de SF Pro Display (non redistribuable hors plateformes Apple).
+Space Grotesk a été retiré.
+
+**Animations** : nouveau composant `src/components/ui/Reveal.tsx`
+(Framer Motion) pour les scroll-reveal — fondu + légère montée au moment
+où une section entre dans le viewport, easing `cubic-bezier(0.16, 1,
+0.3, 1)`. Nav en verre dépoli (`backdrop-filter: blur`) qui apparaît au
+scroll. Boutons passés en pilules pleinement arrondies.
+
+**État** : page d'accueil et chrome global (nav, footer, boutons, badges)
+refaits en profondeur. Les autres pages (services, à propos, contact,
+tarifs, blog, dashboards) héritent automatiquement du nouveau thème via
+les tokens — une passe de polish visuel dédiée à chacune reste à faire
+si un rendu plus travaillé que l'héritage automatique est voulu.
+
+`tsc --noEmit` et `next lint` passent sans erreur. Le build complet
+(`next build`) n'a pas pu être vérifié dans le bac à sable de
+développement (accès réseau à Google Fonts bloqué par l'allowlist du
+sandbox) — à vérifier sur Vercel ou en local.
+
+## Migration d'hébergement — Vercel (site) + Azure (API, inchangé)
+
+Seul `orbix-website` migre vers Vercel ; `orbix-api` (NestJS, PostgreSQL,
+Blob Storage) reste sur Azure App Service tel quel — Vercel ne fait pas
+tourner NestJS/Postgres, et l'API publique reste accessible à la même
+URL.
+
+Le projet est un Next.js standard sans `output: 'export'` ni
+configuration serveur spécifique à Azure dans `next.config.js` : il se
+déploie sur Vercel sans changement de code, en important simplement le
+dépôt GitHub depuis le tableau de bord Vercel.
+
+**Variables d'environnement à renseigner dans Vercel** (Project Settings
+→ Environment Variables, pour Production **et** Preview) :
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
+- `CLERK_SECRET_KEY`
+- `NEXT_PUBLIC_API_URL` → l'URL de l'App Service `orbix-api` déjà en
+  production sur Azure (inchangée)
+
+**Côté `orbix-api`** : une fois le site en ligne sur Vercel, ajouter son
+domaine (le domaine `*.vercel.app` généré, puis le domaine final
+`orbixlabs.tech` une fois pointé) à `ALLOWED_ORIGINS` dans la
+configuration de l'App Service `orbix-api`, sinon les appels API depuis
+le nouveau domaine seront bloqués par CORS.
+
+**Domaine personnalisé** : une fois `orbixlabs.tech` ajouté dans Vercel
+(Project Settings → Domains), mettre à jour le DNS du domaine pour
+pointer dessus (Vercel indique les enregistrements exacts à l'ajout du
+domaine) — l'ancien enregistrement vers l'App Service Azure
+`orbix-website` peut alors être retiré.
+
+**GitHub Actions** : `.github/workflows/azure-deploy.yml` déploie
+toujours `orbix-website` vers Azure App Service à chaque push sur
+`main`. Une fois Vercel confirmé comme hébergement définitif, soit
+désactiver ce workflow, soit l'adapter pour ne plus déployer que
+l'API — à trancher une fois le nouveau design validé en preview.
 
 ## Structure
 
